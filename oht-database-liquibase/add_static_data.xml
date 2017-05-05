@@ -96,4 +96,17 @@
             <delete tableName="nationality"></delete>
         </rollback>
     </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_7">
+        <insert tableName="address_type">
+            <column name="name" value="National"/>
+            <column name="description" value="National"/>
+        </insert>
+        <insert tableName="address_type">
+            <column name="name" value="Foreign"/>
+            <column name="description" value="Foreign"/>
+        </insert>
+        <rollback>
+            <delete tableName="address_type"></delete>
+        </rollback>
+    </changeSet>
 </databaseChangeLog>
