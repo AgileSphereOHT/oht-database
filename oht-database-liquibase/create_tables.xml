@@ -18,7 +18,10 @@
             <column name="maiden_name" type="VARCHAR(255)"/>
             <column name="date_of_birth" type="DATE"/>
             <column name="gender_id" type="BIGINT"/>
-            <column name="nationality_id" type="VARCHAR(255)"/>
+            <column name="nationality_id" type="BIGINT"/>
+            <column name="nino" type="VARCHAR(255)"/>
+            <column name="telephone_number" type="VARCHAR(255)"/>
+            <column name="email_address" type="VARCHAR(255)"/>
             <column name="creation_date" type="DATETIME"/>
             <column name="last_updated_date" type="DATETIME"/>
         </createTable>
@@ -201,5 +204,47 @@
                                  baseTableName="citizen_address"
                                  referencedColumnNames="address_id"
                                  referencedTableName="address"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_22">
+        <createTable schemaName="public" tableName="pending_registration">
+            <column autoIncrement="true" name="pending_registration_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="pending_registration_pkey"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="other_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="maiden_name" type="VARCHAR(255)"/>
+            <column name="date_of_birth" type="DATE"/>
+            <column name="gender_id" type="BIGINT"/>
+            <column name="nationality_id" type="BIGINT"/>
+            <column name="nino" type="VARCHAR(255)"/>
+            <column name="telephone_number" type="VARCHAR(255)"/>
+            <column name="email_address" type="VARCHAR(255)"/>
+            <column name="current_line_one" type="VARCHAR(255)"/>
+            <column name="current_line_two" type="VARCHAR(255)"/>
+            <column name="current_line_three" type="VARCHAR(255)"/>
+            <column name="current_line_four" type="VARCHAR(255)"/>
+            <column name="current_line_five" type="VARCHAR(255)"/>
+            <column name="current_line_six" type="VARCHAR(255)"/>
+            <column name="current_country_id" type="BIGINT"/>
+            <column name="current_postcode" type="VARCHAR(255)"/>
+            <column name="moving_line_one" type="VARCHAR(255)"/>
+            <column name="moving_line_two" type="VARCHAR(255)"/>
+            <column name="moving_line_three" type="VARCHAR(255)"/>
+            <column name="moving_line_four" type="VARCHAR(255)"/>
+            <column name="moving_line_five" type="VARCHAR(255)"/>
+            <column name="moving_line_six" type="VARCHAR(255)"/>
+            <column name="moving_country_id" type="BIGINT"/>
+            <column name="moving_postcode" type="VARCHAR(255)"/>
+            <column name="benefit_type_id" type="BIGINT"/>
+            <column name="issue_type" type="VARCHAR2(255)"/>
+            <column name="registration_status_id" type="BIGINT"/>
+            <column name="country_id" type="BIGINT"/>
+            <column name="entitlement_date" type="DATE"/>
+            <column name="has_foreign_pension" type="VARCHAR2(255)"/>
+            <column name="creation_date" type="DATETIME"/>
+            <column name="last_updated_date" type="DATETIME"/>
+        </createTable>
     </changeSet>
 </databaseChangeLog>
