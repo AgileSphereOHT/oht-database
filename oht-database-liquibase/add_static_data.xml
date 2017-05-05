@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="pwhitehead" id="tag_ohtd_002_1">
+        <tagDatabase tag="ohtd_002_1"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_1">
+        <insert tableName="gender">
+            <column name="name" value="Male"/>
+            <column name="description" value="Male"/>
+        </insert>
+        <insert tableName="gender">
+            <column name="name" value="Female"/>
+            <column name="description" value="Female"/>
+        </insert>
+        <insert tableName="gender">
+            <column name="name" value="Unknown"/>
+            <column name="description" value="Unknown"/>
+        </insert>
+        <rollback>
+            <delete tableName="gender"></delete>
+        </rollback>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_2">
+        <insert tableName="country">
+            <column name="name" value="UK"/>
+            <column name="description" value="United Kingdom"/>
+        </insert>
+        <insert tableName="country">
+            <column name="name" value="DE"/>
+            <column name="description" value="Germany"/>
+        </insert>
+        <insert tableName="country">
+            <column name="name" value="ES"/>
+            <column name="description" value="Spain"/>
+        </insert>
+        <rollback>
+            <delete tableName="country"></delete>
+        </rollback>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_3">
+        <insert tableName="benefit_type">
+            <column name="name" value="Retirement"/>
+            <column name="description" value="Retirement"/>
+        </insert>
+        <rollback>
+            <delete tableName="benefit_type"></delete>
+        </rollback>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_4">
+        <insert tableName="citizen_status">
+            <column name="name" value="Pensioner"/>
+            <column name="description" value="Pensioner"/>
+        </insert>
+        <rollback>
+            <delete tableName="citizen_status"></delete>
+        </rollback>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_5">
+        <insert tableName="registration_status">
+            <column name="name" value="Pending"/>
+            <column name="description" value="Pending"/>
+        </insert>
+        <insert tableName="registration_status">
+            <column name="name" value="Completed"/>
+            <column name="description" value="Completed"/>
+        </insert>
+        <insert tableName="registration_status">
+            <column name="name" value="Delayed"/>
+            <column name="description" value="Delayed"/>
+        </insert>
+        <insert tableName="registration_status">
+            <column name="name" value="Rejected"/>
+            <column name="description" value="Rejected"/>
+        </insert>
+        <rollback>
+            <delete tableName="registration_status"></delete>
+        </rollback>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_6">
+        <insert tableName="nationality">
+            <column name="name" value="British"/>
+            <column name="description" value="British"/>
+        </insert>
+        <insert tableName="nationality">
+            <column name="name" value="Spanish"/>
+            <column name="description" value="Spanish"/>
+        </insert>
+        <insert tableName="nationality">
+            <column name="name" value="German"/>
+            <column name="description" value="German"/>
+        </insert>
+        <rollback>
+            <delete tableName="nationality"></delete>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

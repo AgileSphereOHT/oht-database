@@ -1,4 +1,4 @@
-package uk.doh.oht.database.model;
+package uk.doh.oht.database.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

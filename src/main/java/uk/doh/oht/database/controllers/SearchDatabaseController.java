@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import uk.doh.oht.database.model.SearchData;
-import uk.doh.oht.database.model.SearchResults;
+import uk.doh.oht.database.domain.SearchData;
+import uk.doh.oht.database.domain.SearchResults;
 import uk.doh.oht.database.service.DatabaseSearchResultsService;
 
 import javax.inject.Inject;

@@ -1,7 +1,7 @@
 package uk.doh.oht.database.service;
 
-import uk.doh.oht.database.model.SearchData;
-import uk.doh.oht.database.model.SearchResults;
+import uk.doh.oht.database.domain.SearchData;
+import uk.doh.oht.database.domain.SearchResults;
 
 import java.util.List;
 
