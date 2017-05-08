@@ -18,4 +18,5 @@ public class SearchData {
     private String lastName;
     private Date dateOfBirth;
     private String postcode;
+    private String caseId;
 }

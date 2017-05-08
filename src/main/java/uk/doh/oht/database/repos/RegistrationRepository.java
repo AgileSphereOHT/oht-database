@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Repository
 public interface RegistrationRepository extends CrudRepository<RegistrationEntity, Long> {
-    List<RegistrationEntity> findByCitizenEntityNinoInIgnoreCase(final List<String> ninos);
-    List<RegistrationEntity> findByCitizenEntityFirstNameLikeIgnoreCaseAndCitizenEntityLastNameLikeIgnoreCaseAndCitizenEntityDateOfBirth(
+    RegistrationEntity findByCitizenEntityNinoInIgnoreCase(final String ninos);
+    RegistrationEntity findByCitizenEntityFirstNameLikeIgnoreCaseAndCitizenEntityLastNameLikeIgnoreCaseAndCitizenEntityDateOfBirth(
             final String firstName, final String lastName, final Date dateOfBirth);
 }

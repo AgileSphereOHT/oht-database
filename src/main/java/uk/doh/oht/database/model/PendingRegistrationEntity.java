@@ -52,6 +52,7 @@ public class PendingRegistrationEntity {
     private String requestedBy;
     private Timestamp creationDate;
     private Timestamp lastUpdatedDate;
+    private String caseId;
 
     @Id
     @javax.persistence.Column(name = "pending_registration_id", nullable = false)
@@ -273,5 +274,9 @@ public class PendingRegistrationEntity {
     @javax.persistence.Column(name = "last_updated_date", nullable = true)
     public Timestamp getLastUpdatedDate() {
         return lastUpdatedDate;
+    }
+
+    public String getCaseId() {
+        return caseId;
     }
 }

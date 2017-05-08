@@ -25,6 +25,7 @@ public class RegistrationEntity {
     private CitizenEntity citizenEntity;
     private RegistrationStatusEntity registrationStatusEntity;
     private CountryEntity countryEntity;
+    private String caseId;
 
     @Id
     @Column(name = "registration_id", nullable = false)
@@ -90,5 +91,10 @@ public class RegistrationEntity {
     @JoinColumn(name = "registration_status_id")
     public RegistrationStatusEntity getRegistrationStatusEntity() {
         return this.registrationStatusEntity;
+    }
+
+    @Transient
+    public String getCaseId() {
+        return caseId;
     }
 }

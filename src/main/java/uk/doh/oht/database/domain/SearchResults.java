@@ -22,4 +22,5 @@ public class SearchResults {
     private Date startDate;
     private String hasForeignPension;
     private String requestedBy;
+    private String caseId;
 }

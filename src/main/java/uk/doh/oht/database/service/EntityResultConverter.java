@@ -39,7 +39,8 @@ public class EntityResultConverter {
                     registrationEntity.getEntitlementDate(),
                     registrationEntity.getStartDate(),
                     null,
-                    registrationEntity.getRequestedBy())
+                    registrationEntity.getRequestedBy(),
+                    registrationEntity.getCaseId())
             );
         }
         return searchResults;
@@ -61,7 +62,8 @@ public class EntityResultConverter {
                     pendingRegistration.getEntitlementDate(),
                     null,
                     pendingRegistration.getHasForeignPension(),
-                    pendingRegistration.getRequestedBy())
+                    pendingRegistration.getRequestedBy(),
+                    pendingRegistration.getCaseId())
             );
         }
         return searchResults;
