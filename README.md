@@ -26,3 +26,5 @@ To allow IntelliJ to support Lombok install the plugin:
 ##### Confluence
 - https://oh-alpha-confluence.atlassian.net/wiki/display/OHA/Overseas+Healthcare+Alpha
 
+##### Database
+- View the README file in oht-database-liquibase directory

@@ -10,8 +10,7 @@ or download jar and add it to your path
 
 3) If running validate fails try running with debug:
   liquibase --classpath=<location driver>/postgresql.jar --logLevel=DEBUG validate
-
-
+ 
 
 Creating the Database
 ===================
@@ -32,6 +31,8 @@ Schema Update
 PGJARLOCATION=$HOME
 liquibase --classpath=$PGJARLOCATION/postgresql.jar update
 
+e.g. liquibase --classpath=/Users/peterwhitehead/.gradle/caches/modules-2/files-2.1/org.postgresql/postgresql/42.0.0/938ede0cdf862cc4eaba5023a86254783af1d261/postgresql-42.0.0.jar update
+
 
 Testing rollback
 =====================
@@ -40,3 +41,7 @@ Testing rollback
 --           <tagDatabase tag="ohtd_001_1"/>
 --       </changeSet>
 liquibase --classpath=$PGJARLOCATION/postgresql.jar rollback ohtd_001_1
+
+Dummy Data
+=====================
+File dummy_data.sql contains some test data. 
