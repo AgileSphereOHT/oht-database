@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Setter
 @EqualsAndHashCode
 @Entity
-@javax.persistence.Table(name = "pending_registration", schema = "public", catalog = "oht_database")
+@javax.persistence.Table(name = "pending_registration")
 public class PendingRegistrationEntity {
     private long pendingRegistrationId;
     private String title;
@@ -162,7 +162,7 @@ public class PendingRegistrationEntity {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "current_country_id", name = "country_id")
+    @JoinColumn(referencedColumnName = "country_id", name = "current_country_id")
     public CountryEntity getCurrentCountryEntity() {
         return this.currentCountryEntity;
     }
@@ -210,7 +210,7 @@ public class PendingRegistrationEntity {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "moving_country_id", name = "country_id")
+    @JoinColumn(referencedColumnName = "country_id", name = "moving_country_id")
     public CountryEntity getMovingCountryEntity() {
         return this.movingCountryEntity;
     }

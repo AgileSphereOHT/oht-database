@@ -3,6 +3,7 @@ package uk.doh.oht.database.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,8 +18,8 @@ public class UserDetails {
     private String otherName;
     private String lastName;
     private String maidenName;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String gender;
     private String nationality;
-    private List<ContactDetails> contactDetailsList;
+    private List<ContactDetail> contactDetailList;
 }

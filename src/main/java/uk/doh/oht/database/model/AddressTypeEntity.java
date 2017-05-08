@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "address_type", schema = "public", catalog = "oht_database")
+@Table(name = "address_type")
 public class AddressTypeEntity {
     private long addressTypeId;
     private String name;

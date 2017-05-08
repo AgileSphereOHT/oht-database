@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "citizen", schema = "public", catalog = "oht_database")
+@Table(name = "citizen")
 public class CitizenEntity {
     private long citizenId;
     private String title;
@@ -24,13 +24,13 @@ public class CitizenEntity {
     private String maidenName;
     private Date dateOfBirth;
     private String nino;
-    private String telephoneNumber;
-    private String emailAddress;
+    private List<ContactDetailEntity> contactDetailEntityList;
     private Timestamp creationDate;
     private Timestamp lastUpdatedDate;
     private List<AddressEntity> addressEntityList;
     private GenderEntity genderEntity;
     private NationalityEntity nationalityEntity;
+    private RegistrationEntity registrationEntity;
 
     @Id
     @Column(name = "citizen_id", nullable = false)
@@ -80,16 +80,10 @@ public class CitizenEntity {
         return nino;
     }
 
-    @Basic
-    @Column(name = "telephone_number", nullable = true, length = 255)
-    public String getTelephoneNumber() {
-        return telephoneNumber;
-    }
-
-    @Basic
-    @Column(name = "email_address", nullable = true, length = 255)
-    public String getEmailAddress() {
-        return emailAddress;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "citizen_contact_detail", joinColumns = { @JoinColumn(name = "citizen_id") }, inverseJoinColumns = { @JoinColumn(name = "contact_detail_id") })
+    public List<ContactDetailEntity> getContactDetailEntityList() {
+        return this.contactDetailEntityList;
     }
 
     @Basic
@@ -120,5 +114,10 @@ public class CitizenEntity {
     @JoinColumn(name = "nationality_id")
     public NationalityEntity getNationalityEntity() {
         return this.nationalityEntity;
+    }
+
+    @OneToOne(mappedBy = "citizenEntity")
+    public RegistrationEntity getRegistrationEntity() {
+        return registrationEntity;
     }
 }

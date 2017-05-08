@@ -6,22 +6,21 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * Created by peterwhitehead on 05/05/2017.
+ * Created by peterwhitehead on 06/05/2017.
  */
 @Setter
 @EqualsAndHashCode
-
 @Entity
-@Table(name = "citizen_status")
-public class CitizenStatusEntity {
-    private long citizenStatusId;
+@Table(name = "contact_detail_type")
+public class ContactDetailTypeEntity {
+    private long contactDetailTypeId;
     private String name;
     private String description;
 
     @Id
-    @Column(name = "citizen_status_id", nullable = false)
-    public long getCitizenStatusId() {
-        return citizenStatusId;
+    @Column(name = "contact_detail_type_id", nullable = false)
+    public long getContactDetailTypeId() {
+        return contactDetailTypeId;
     }
 
     @Basic

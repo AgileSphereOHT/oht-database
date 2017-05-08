@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "country", schema = "public", catalog = "oht_database")
+@Table(name = "country")
 public class CountryEntity {
     private long countryId;
     private String name;

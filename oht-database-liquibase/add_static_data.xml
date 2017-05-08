@@ -109,4 +109,21 @@
             <delete tableName="address_type"></delete>
         </rollback>
     </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_8">
+        <insert tableName="contact_detail_type">
+            <column name="name" value="Mobile"/>
+            <column name="description" value="Mobile"/>
+        </insert>
+        <insert tableName="contact_detail_type">
+            <column name="name" value="Landline"/>
+            <column name="description" value="Landline"/>
+        </insert>
+        <insert tableName="contact_detail_type">
+            <column name="name" value="Email"/>
+            <column name="description" value="Email"/>
+        </insert>
+        <rollback>
+            <delete tableName="contact_detail_type"></delete>
+        </rollback>
+    </changeSet>
 </databaseChangeLog>

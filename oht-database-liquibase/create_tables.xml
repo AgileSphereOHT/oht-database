@@ -20,8 +20,6 @@
             <column name="gender_id" type="BIGINT"/>
             <column name="nationality_id" type="BIGINT"/>
             <column name="nino" type="VARCHAR(255)"/>
-            <column name="telephone_number" type="VARCHAR(255)"/>
-            <column name="email_address" type="VARCHAR(255)"/>
             <column name="creation_date" type="DATETIME"/>
             <column name="last_updated_date" type="DATETIME"/>
         </createTable>
@@ -137,76 +135,33 @@
         </createTable>
     </changeSet>
     <changeSet author="pwhitehead" id="ohtd_001_12">
-        <addForeignKeyConstraint constraintName="citizen_fk1"
-                                 baseColumnNames="gender_id"
-                                 baseTableName="citizen"
-                                 referencedColumnNames="gender_id"
-                                 referencedTableName="gender"/>
+        <createTable schemaName="public" tableName="contact_detail_type">
+            <column autoIncrement="true" name="contact_detail_type_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="contact_detail_type_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
     </changeSet>
     <changeSet author="pwhitehead" id="ohtd_001_13">
-        <addForeignKeyConstraint constraintName="citizen_fk2"
-                                 baseColumnNames="nationality_id"
-                                 baseTableName="citizen"
-                                 referencedColumnNames="nationality_id"
-                                 referencedTableName="nationality"/>
+        <createTable schemaName="public" tableName="contact_detail">
+            <column autoIncrement="true" name="contact_detail_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="contact_detail_pkey"/>
+            </column>
+            <column name="contact_detail_type_id" type="BIGINT"/>
+            <column name="contact" type="VARCHAR(255)"/>
+        </createTable>
     </changeSet>
     <changeSet author="pwhitehead" id="ohtd_001_14">
-        <addForeignKeyConstraint constraintName="registration_fk1"
-                                 baseColumnNames="registration_status_id"
-                                 baseTableName="registration"
-                                 referencedColumnNames="registration_status_id"
-                                 referencedTableName="registration_status"/>
+        <createTable schemaName="public" tableName="citizen_contact_detail">
+            <column autoIncrement="true" name="citizen_contact_detail_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="citizen_contact_detail_pkey"/>
+            </column>
+            <column name="citizen_id" type="BIGINT"/>
+            <column name="contact_detail_id" type="BIGINT"/>
+        </createTable>
     </changeSet>
     <changeSet author="pwhitehead" id="ohtd_001_15">
-        <addForeignKeyConstraint constraintName="registration_fk2"
-                                 baseColumnNames="country_id"
-                                 baseTableName="registration"
-                                 referencedColumnNames="country_id"
-                                 referencedTableName="country"/>
-    </changeSet>
-    <changeSet author="pwhitehead" id="ohtd_001_16">
-        <addForeignKeyConstraint constraintName="registration_fk3"
-                                 baseColumnNames="citizen_status_id"
-                                 baseTableName="registration"
-                                 referencedColumnNames="citizen_status_id"
-                                 referencedTableName="citizen_status"/>
-    </changeSet>
-    <changeSet author="pwhitehead" id="ohtd_001_17">
-        <addForeignKeyConstraint constraintName="registration_fk4"
-                                 baseColumnNames="benefit_type_id"
-                                 baseTableName="registration"
-                                 referencedColumnNames="benefit_type_id"
-                                 referencedTableName="benefit_type"/>
-    </changeSet>
-    <changeSet author="pwhitehead" id="ohtd_001_18">
-        <addForeignKeyConstraint constraintName="address_fk1"
-                                 baseColumnNames="address_type_id"
-                                 baseTableName="address"
-                                 referencedColumnNames="address_type_id"
-                                 referencedTableName="address_type"/>
-    </changeSet>
-    <changeSet author="pwhitehead" id="ohtd_001_19">
-        <addForeignKeyConstraint constraintName="address_fk2"
-                                 baseColumnNames="country_id"
-                                 baseTableName="address"
-                                 referencedColumnNames="country_id"
-                                 referencedTableName="country"/>
-    </changeSet>
-    <changeSet author="pwhitehead" id="ohtd_001_20">
-        <addForeignKeyConstraint constraintName="citizen_address_fk1"
-                                 baseColumnNames="citizen_id"
-                                 baseTableName="citizen_address"
-                                 referencedColumnNames="citizen_id"
-                                 referencedTableName="citizen"/>
-    </changeSet>
-    <changeSet author="pwhitehead" id="ohtd_001_21">
-        <addForeignKeyConstraint constraintName="citizen_address_fk2"
-                                 baseColumnNames="address_id"
-                                 baseTableName="citizen_address"
-                                 referencedColumnNames="address_id"
-                                 referencedTableName="address"/>
-    </changeSet>
-    <changeSet author="pwhitehead" id="ohtd_001_22">
         <createTable schemaName="public" tableName="pending_registration">
             <column autoIncrement="true" name="pending_registration_id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="pending_registration_pkey"/>
@@ -248,5 +203,97 @@
             <column name="creation_date" type="DATETIME"/>
             <column name="last_updated_date" type="DATETIME"/>
         </createTable>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_16">
+        <addForeignKeyConstraint constraintName="citizen_fk1"
+                                 baseColumnNames="gender_id"
+                                 baseTableName="citizen"
+                                 referencedColumnNames="gender_id"
+                                 referencedTableName="gender"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_17">
+        <addForeignKeyConstraint constraintName="citizen_fk2"
+                                 baseColumnNames="nationality_id"
+                                 baseTableName="citizen"
+                                 referencedColumnNames="nationality_id"
+                                 referencedTableName="nationality"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_18">
+        <addForeignKeyConstraint constraintName="registration_fk1"
+                                 baseColumnNames="registration_status_id"
+                                 baseTableName="registration"
+                                 referencedColumnNames="registration_status_id"
+                                 referencedTableName="registration_status"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_19">
+        <addForeignKeyConstraint constraintName="registration_fk2"
+                                 baseColumnNames="country_id"
+                                 baseTableName="registration"
+                                 referencedColumnNames="country_id"
+                                 referencedTableName="country"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_20">
+        <addForeignKeyConstraint constraintName="registration_fk3"
+                                 baseColumnNames="citizen_status_id"
+                                 baseTableName="registration"
+                                 referencedColumnNames="citizen_status_id"
+                                 referencedTableName="citizen_status"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_21">
+        <addForeignKeyConstraint constraintName="registration_fk4"
+                                 baseColumnNames="benefit_type_id"
+                                 baseTableName="registration"
+                                 referencedColumnNames="benefit_type_id"
+                                 referencedTableName="benefit_type"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_22">
+        <addForeignKeyConstraint constraintName="address_fk1"
+                                 baseColumnNames="address_type_id"
+                                 baseTableName="address"
+                                 referencedColumnNames="address_type_id"
+                                 referencedTableName="address_type"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_23">
+        <addForeignKeyConstraint constraintName="address_fk2"
+                                 baseColumnNames="country_id"
+                                 baseTableName="address"
+                                 referencedColumnNames="country_id"
+                                 referencedTableName="country"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_24">
+        <addForeignKeyConstraint constraintName="citizen_address_fk1"
+                                 baseColumnNames="citizen_id"
+                                 baseTableName="citizen_address"
+                                 referencedColumnNames="citizen_id"
+                                 referencedTableName="citizen"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_25">
+        <addForeignKeyConstraint constraintName="citizen_address_fk2"
+                                 baseColumnNames="address_id"
+                                 baseTableName="citizen_address"
+                                 referencedColumnNames="address_id"
+                                 referencedTableName="address"/>
+    </changeSet>
+
+    <changeSet author="pwhitehead" id="ohtd_001_26">
+        <addForeignKeyConstraint constraintName="contact_detail_fk1"
+                                 baseColumnNames="contact_detail_type_id"
+                                 baseTableName="contact_detail"
+                                 referencedColumnNames="contact_detail_type_id"
+                                 referencedTableName="contact_detail_type"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_27">
+        <addForeignKeyConstraint constraintName="citizen_contact_detail_fk1"
+                                 baseColumnNames="citizen_id"
+                                 baseTableName="citizen_contact_detail"
+                                 referencedColumnNames="citizen_id"
+                                 referencedTableName="citizen"/>
+    </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_001_28">
+        <addForeignKeyConstraint constraintName="citizen_contact_detail_fk2"
+                                 baseColumnNames="contact_detail_id"
+                                 baseTableName="citizen_contact_detail"
+                                 referencedColumnNames="contact_detail_id"
+                                 referencedTableName="contact_detail"/>
     </changeSet>
 </databaseChangeLog>

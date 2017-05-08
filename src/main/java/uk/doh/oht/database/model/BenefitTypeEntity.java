@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "benefit_type", schema = "public", catalog = "oht_database")
+@Table(name = "benefit_type")
 public class BenefitTypeEntity {
     private long benefitTypeId;
     private String name;

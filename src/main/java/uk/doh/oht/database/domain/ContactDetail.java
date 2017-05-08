@@ -8,7 +8,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class ContactDetails {
+public class ContactDetail {
     private String type;
     private String details;
 }

@@ -3,6 +3,7 @@ package uk.doh.oht.database.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public class SearchResults {
     private String issueType;
     private String registrationStatus;
     private String country;
-    private String entitlementSate;
+    private Date entitlementDate;
     private String hasForeignPension;
+    private String requestedBy;
 }

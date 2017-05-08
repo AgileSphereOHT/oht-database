@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "address", schema = "public", catalog = "oht_database")
+@Table(name = "address")
 public class AddressEntity {
     private long addressId;
     private String lineOne;
@@ -29,6 +29,7 @@ public class AddressEntity {
     private Timestamp lastUpdatedDate;
     private AddressTypeEntity addressTypeEntity;
     private CountryEntity countryEntity;
+    private CitizenEntity citizenEntity;
 
     @Id
     @Column(name = "address_id", nullable = false)
@@ -118,5 +119,11 @@ public class AddressEntity {
     @JoinColumn(name = "country_id")
     public CountryEntity getCountryEntity() {
         return this.countryEntity;
+    }
+
+    @ManyToOne
+    @JoinTable(name = "citizen_address", joinColumns = { @JoinColumn(name = "address_id") }, inverseJoinColumns = { @JoinColumn(name = "citizen_id") })
+    public CitizenEntity getCitizenEntity() {
+        return citizenEntity;
     }
 }

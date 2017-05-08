@@ -11,10 +11,10 @@ import javax.persistence.*;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "gender", schema = "public", catalog = "oht_database")
+@Table(name = "gender")
 public class GenderEntity {
     private long genderId;
-    private String type;
+    private String name;
     private String description;
 
     @Id
@@ -24,9 +24,9 @@ public class GenderEntity {
     }
 
     @Basic
-    @Column(name = "type", nullable = true, length = 255)
-    public String getType() {
-        return type;
+    @Column(name = "name", nullable = true, length = 255)
+    public String getName() {
+        return name;
     }
 
     @Basic

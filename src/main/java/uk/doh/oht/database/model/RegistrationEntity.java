@@ -12,7 +12,7 @@ import java.sql.Date;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "registration", schema = "public", catalog = "oht_database")
+@Table(name = "registration")
 public class RegistrationEntity {
     private long registrationId;
     private String requestedBy;
