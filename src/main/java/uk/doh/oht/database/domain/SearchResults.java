@@ -19,6 +19,7 @@ public class SearchResults {
     private String registrationStatus;
     private String country;
     private Date entitlementDate;
+    private Date startDate;
     private String hasForeignPension;
     private String requestedBy;
 }

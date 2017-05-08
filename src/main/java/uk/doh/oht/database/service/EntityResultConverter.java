@@ -37,6 +37,7 @@ public class EntityResultConverter {
                     registrationEntity.getRegistrationStatusEntity().getName(),
                     registrationEntity.getCountryEntity().getDescription(),
                     registrationEntity.getEntitlementDate(),
+                    registrationEntity.getStartDate(),
                     null,
                     registrationEntity.getRequestedBy())
             );
@@ -58,6 +59,7 @@ public class EntityResultConverter {
                     pendingRegistration.getRegistrationStatusEntity().getName(),
                     pendingRegistration.getCountryEntity().getDescription(),
                     pendingRegistration.getEntitlementDate(),
+                    null,
                     pendingRegistration.getHasForeignPension(),
                     pendingRegistration.getRequestedBy())
             );
