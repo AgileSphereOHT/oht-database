@@ -1,7 +1,6 @@
 package uk.doh.oht.database.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -9,8 +8,11 @@ import java.sql.Timestamp;
 /**
  * Created by peterwhitehead on 05/05/2017.
  */
+@Builder
 @Setter
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "address")
 public class AddressEntity {

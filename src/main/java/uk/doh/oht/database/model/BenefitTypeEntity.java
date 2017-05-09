@@ -1,15 +1,17 @@
 package uk.doh.oht.database.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 /**
  * Created by peterwhitehead on 05/05/2017.
  */
+@Builder
 @Setter
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "benefit_type")
 public class BenefitTypeEntity {

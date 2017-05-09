@@ -1,8 +1,11 @@
 package uk.doh.oht.database.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import uk.doh.oht.database.validation.StartDateFormDate;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +14,9 @@ import java.util.List;
  */
 @Data
 @AllArgsConstructor
-public class SearchResults {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class RegistrationData implements Serializable {
+    private long registrationId;
     private UserDetails userDetails;
     private List<Address> addresses;
     private String benefitType;
@@ -19,8 +24,9 @@ public class SearchResults {
     private String registrationStatus;
     private String country;
     private Date entitlementDate;
-    private Date startDate;
+    private StartDateFormDate startDate;
     private String hasForeignPension;
     private String requestedBy;
+    private StartDateFormDate s073StartDate;
     private String caseId;
 }

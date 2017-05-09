@@ -1,6 +1,6 @@
 INSERT INTO public.citizen(
-  title, first_name, other_name, last_name, maiden_name, date_of_birth, gender_id, nationality_id, nino, telephone_number, email_address, creation_date, last_updated_date)
-VALUES ('Mr', 'Justin', null, 'Edwards', null, '20-04-1956', 1, 1, '12345678', current_date, current_date);
+  title, first_name, other_name, last_name, maiden_name, date_of_birth, gender_id, nationality_id, nino, creation_date, last_updated_date)
+VALUES ('Mr', 'Justin', null, 'Edwards', null, '20-04-1956', 1, 1, '123456', current_date, current_date);
 --insert uk address
 INSERT INTO public.address(
   line_one, line_two, line_three, line_four, line_five, line_six, country_id, postcode, address_type_id, correspondence_address, start_date, end_date, creation_date, last_updated_date)

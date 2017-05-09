@@ -1,7 +1,6 @@
 package uk.doh.oht.database.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -9,8 +8,11 @@ import java.sql.Date;
 /**
  * Created by peterwhitehead on 05/05/2017.
  */
+@Builder
 @Setter
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "registration")
 public class RegistrationEntity {
@@ -20,6 +22,7 @@ public class RegistrationEntity {
     private Date entitlementDate;
     private Date startDate;
     private Date endDate;
+    private Date s073StartDate;
     private BenefitTypeEntity benefitTypeEntity;
     private CitizenStatusEntity citizenStatusEntity;
     private CitizenEntity citizenEntity;
@@ -63,6 +66,12 @@ public class RegistrationEntity {
         return endDate;
     }
 
+    @Basic
+    @Column(name = "s073_start_date", nullable = true)
+    public Date getS073StartDate() {
+        return s073StartDate;
+    }
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "citizen_status_id")
     public CitizenStatusEntity getCitizenStatusEntity() {
@@ -75,7 +84,7 @@ public class RegistrationEntity {
         return this.benefitTypeEntity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "citizen_id")
     public CitizenEntity getCitizenEntity() {
         return this.citizenEntity;

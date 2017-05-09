@@ -94,6 +94,7 @@
             <column name="registration_status_id" type="BIGINT"/>
             <column name="country_id" type="BIGINT"/>
             <column name="entitlement_date" type="DATE"/>
+            <column name="s073_start_date" type="DATE"/>
             <column name="start_date" type="DATE"/>
             <column name="end_date" type="DATE"/>
         </createTable>

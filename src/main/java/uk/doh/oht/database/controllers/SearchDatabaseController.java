@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import uk.doh.oht.database.domain.SearchData;
-import uk.doh.oht.database.domain.SearchResults;
+import uk.doh.oht.database.domain.RegistrationData;
 import uk.doh.oht.database.service.DatabaseSearchResultsService;
 
 import javax.inject.Inject;
@@ -30,7 +30,7 @@ public class SearchDatabaseController {
             value = "Gets a list of all registrations matching search data criteria",
             notes = "Send a request to return registrations matching all search data criteria in database"
     )
-    public ResponseEntity<List<SearchResults>> retrieveOpenRegistrations(@RequestBody final List<SearchData> searchData) {
+    public ResponseEntity<List<RegistrationData>> retrieveOpenRegistrations(@RequestBody final List<SearchData> searchData) {
         return ResponseEntity.ok().body(databaseSearchResultsService.searchCases(searchData));
     }
 
@@ -39,7 +39,7 @@ public class SearchDatabaseController {
             value = "Gets a list of all pending registration",
             notes = "Send a request to return all search pending registrations from database"
     )
-    public ResponseEntity<List<SearchResults>> retrievePendingRegistrations() {
+    public ResponseEntity<List<RegistrationData>> retrievePendingRegistrations() {
         return ResponseEntity.ok().body(databaseSearchResultsService.getPendingRegistrations());
     }
 }

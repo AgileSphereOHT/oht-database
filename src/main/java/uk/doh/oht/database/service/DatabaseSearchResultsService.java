@@ -36,7 +36,7 @@ public class DatabaseSearchResultsService {
         this.entityResultConverter = entityResultConverter;
     }
 
-    public List<SearchResults> searchCases(final List<SearchData> searchDataList) {
+    public List<RegistrationData> searchCases(final List<SearchData> searchDataList) {
         List<RegistrationEntity> registrationEntityList = new ArrayList<>();
         for (final SearchData searchData : searchDataList) {
             createRegistrationEntity(searchData, registrationEntityList);
@@ -44,7 +44,7 @@ public class DatabaseSearchResultsService {
         return entityResultConverter.convertRegistrationEntity(registrationEntityList);
     }
 
-    public List<SearchResults> getPendingRegistrations() {
+    public List<RegistrationData> getPendingRegistrations() {
         final RegistrationStatusEntity registrationStatusEntity = registrationStatusRepository.findByName(PENDING);
         return entityResultConverter.convertPendingRegistrationEntity(pendingRegistrationRepository.findByRegistrationStatusEntity(registrationStatusEntity));
     }

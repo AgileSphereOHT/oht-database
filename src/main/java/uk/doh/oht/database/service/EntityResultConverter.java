@@ -5,13 +5,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import uk.doh.oht.database.domain.Address;
 import uk.doh.oht.database.domain.ContactDetail;
-import uk.doh.oht.database.domain.SearchResults;
+import uk.doh.oht.database.domain.RegistrationData;
 import uk.doh.oht.database.domain.UserDetails;
 import uk.doh.oht.database.model.*;
+import uk.doh.oht.database.validation.StartDateFormDate;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * Created by peterwhitehead on 06/05/2017.
@@ -24,12 +27,16 @@ public class EntityResultConverter {
     private static final String MOBILE = "Mobile";
     private static final String EMAIL = "Email";
 
-    public List<SearchResults> convertRegistrationEntity(Iterable<RegistrationEntity> registrationEntities) {
-        final List<SearchResults> searchResults = new ArrayList<>();
+    public List<RegistrationData> convertRegistrationEntity(Iterable<RegistrationEntity> registrationEntities) {
+        final List<RegistrationData> registrationDataList = new ArrayList<>();
+        if (registrationEntities == null) {
+            return registrationDataList;
+        }
         final Iterator<RegistrationEntity> results = registrationEntities.iterator();
         while (results.hasNext()) {
             final RegistrationEntity registrationEntity = results.next();
-            searchResults.add(new SearchResults(
+            registrationDataList.add(new RegistrationData(
+                    registrationEntity.getRegistrationId(),
                     createUserDetails(registrationEntity),
                     createAddresses(registrationEntity),
                     registrationEntity.getBenefitTypeEntity().getName(),
@@ -37,22 +44,24 @@ public class EntityResultConverter {
                     registrationEntity.getRegistrationStatusEntity().getName(),
                     registrationEntity.getCountryEntity().getDescription(),
                     registrationEntity.getEntitlementDate(),
-                    registrationEntity.getStartDate(),
+                    new StartDateFormDate(registrationEntity.getStartDate()),
                     null,
                     registrationEntity.getRequestedBy(),
+                    null,
                     registrationEntity.getCaseId())
             );
         }
-        return searchResults;
+        return registrationDataList;
     }
 
-    public List<SearchResults> convertPendingRegistrationEntity(List<PendingRegistrationEntity> pendingRegistrations) {
-        final List<SearchResults> searchResults = new ArrayList<>();
+    public List<RegistrationData> convertPendingRegistrationEntity(List<PendingRegistrationEntity> pendingRegistrations) {
+        final List<RegistrationData> registrationDataList = new ArrayList<>();
         if (CollectionUtils.isEmpty(pendingRegistrations)) {
-            return searchResults;
+            return registrationDataList;
         }
         for (final PendingRegistrationEntity pendingRegistration : pendingRegistrations) {
-            searchResults.add(new SearchResults(
+            registrationDataList.add(new RegistrationData(
+                    pendingRegistration.getPendingRegistrationId(),
                     createUserDetails(pendingRegistration),
                     createAddresses(pendingRegistration),
                     pendingRegistration.getBenefitTypeEntity().getName(),
@@ -63,10 +72,11 @@ public class EntityResultConverter {
                     null,
                     pendingRegistration.getHasForeignPension(),
                     pendingRegistration.getRequestedBy(),
+                    null,
                     pendingRegistration.getCaseId())
             );
         }
-        return searchResults;
+        return registrationDataList;
     }
 
     private UserDetails createUserDetails(final RegistrationEntity registrationEntity) {
@@ -84,28 +94,24 @@ public class EntityResultConverter {
                 createContactDetailsList(citizenEntity.getContactDetailEntityList()));
     }
 
-    private List<ContactDetail> createContactDetailsList(List<ContactDetailEntity> contactDetailEntities) {
-        final List<ContactDetail> contactDetails = new ArrayList<>();
-        for (ContactDetailEntity contactDetailEntity : contactDetailEntities) {
-            contactDetails.add(new ContactDetail(
+    private List<ContactDetail> createContactDetailsList(List<ContactDetailEntity> contactDetailEntityList) {
+        return contactDetailEntityList.stream().map(contactDetailEntity ->
+                new ContactDetail(
                     contactDetailEntity.getContactDetailTypeEntity().getName(),
-                    contactDetailEntity.getContact()));
-        }
-        return contactDetails;
+                    contactDetailEntity.getContact()
+                )
+        ).collect(toList());
     }
 
     private List<Address> createAddresses(final RegistrationEntity registrationEntity) {
-        final List<Address> addresses = new ArrayList<>();
-        final List<AddressEntity> addressEntities = registrationEntity.getCitizenEntity().getAddressEntityList();
-        for (final AddressEntity addressEntity : addressEntities) {
-            addresses.add(new Address(
+        return registrationEntity.getCitizenEntity().getAddressEntityList().stream().map(addressEntity ->
+                new Address(
                     addressEntity.getAddressTypeEntity().getName(), addressEntity.getLineOne(), addressEntity.getLineTwo(),
                     addressEntity.getLineThree(), addressEntity.getLineFour(),
                     addressEntity.getLineFive(), addressEntity.getLineSix(),
-                    addressEntity.getCountryEntity().getDescription(), addressEntity.getPostcode())
-            );
-        }
-        return addresses;
+                    addressEntity.getCountryEntity().getDescription(), addressEntity.getPostcode()
+                )
+        ).collect(toList());
     }
 
     private UserDetails createUserDetails(final PendingRegistrationEntity pendingRegistration) {
@@ -130,17 +136,17 @@ public class EntityResultConverter {
     }
 
     private List<Address> createAddresses(final PendingRegistrationEntity pendingRegistration) {
-        final List<Address> addresses = new ArrayList<>();
-        addresses.add(new Address(NATIONAL, pendingRegistration.getCurrentLineOne(), pendingRegistration.getCurrentLineTwo(),
+        final List<Address> addressList = new ArrayList<>();
+        addressList.add(new Address(NATIONAL, pendingRegistration.getCurrentLineOne(), pendingRegistration.getCurrentLineTwo(),
                 pendingRegistration.getCurrentLineThree(), pendingRegistration.getCurrentLineFour(),
                 pendingRegistration.getCurrentLineFive(), pendingRegistration.getCurrentLineSix(),
                 pendingRegistration.getCurrentCountryEntity().getDescription(), pendingRegistration.getCurrentPostcode()
         ));
-        addresses.add(new Address(FOREIGN, pendingRegistration.getMovingLineOne(), pendingRegistration.getMovingLineTwo(),
+        addressList.add(new Address(FOREIGN, pendingRegistration.getMovingLineOne(), pendingRegistration.getMovingLineTwo(),
                 pendingRegistration.getMovingLineThree(), pendingRegistration.getMovingLineFour(),
                 pendingRegistration.getMovingLineFive(), pendingRegistration.getMovingLineSix(),
                 pendingRegistration.getMovingCountryEntity().getDescription(), pendingRegistration.getMovingPostcode()
         ));
-        return addresses;
+        return addressList;
     }
 }

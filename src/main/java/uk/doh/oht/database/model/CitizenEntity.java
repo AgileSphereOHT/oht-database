@@ -1,7 +1,7 @@
 package uk.doh.oht.database.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -11,8 +11,11 @@ import java.util.List;
 /**
  * Created by peterwhitehead on 05/05/2017.
  */
+@Builder
 @Setter
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "citizen")
 public class CitizenEntity {
@@ -30,7 +33,7 @@ public class CitizenEntity {
     private List<AddressEntity> addressEntityList;
     private GenderEntity genderEntity;
     private NationalityEntity nationalityEntity;
-    private RegistrationEntity registrationEntity;
+    private List<RegistrationEntity> registrationEntity;
 
     @Id
     @Column(name = "citizen_id", nullable = false)
@@ -116,8 +119,9 @@ public class CitizenEntity {
         return this.nationalityEntity;
     }
 
-    @OneToOne(mappedBy = "citizenEntity")
-    public RegistrationEntity getRegistrationEntity() {
+    @OneToMany(mappedBy = "citizenEntity")
+    @Where(clause = "registration_status_id in (1, 3)")
+    public List<RegistrationEntity> getRegistrationEntity() {
         return registrationEntity;
     }
 }
