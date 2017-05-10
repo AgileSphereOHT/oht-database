@@ -31,4 +31,5 @@ public class UpdateDatabaseController {
     public ResponseEntity<Boolean> updateRegistration(@RequestBody final RegistrationData registrationData) {
         return ResponseEntity.ok().body(databaseUpdateService.updateRegistration(registrationData));
     }
+
 }
