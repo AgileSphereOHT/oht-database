@@ -278,6 +278,7 @@ public class PendingRegistrationEntity {
         return lastUpdatedDate;
     }
 
+    @Transient
     public String getCaseId() {
         return caseId;
     }
