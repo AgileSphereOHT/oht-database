@@ -45,12 +45,14 @@ public class PendingRegistrationEntity {
     private String movingLineSix;
     private CountryEntity movingCountryEntity;
     private String movingPostcode;
+    private Date movingDate;
     private BenefitTypeEntity benefitTypeEntity;
     private String issueType;
     private RegistrationStatusEntity registrationStatusEntity;
     private CountryEntity countryEntity;
     private Date entitlementDate;
     private String hasForeignPension;
+    private OccupationTypeEntity occupationTypeEntity;
     private String requestedBy;
     private Timestamp creationDate;
     private Timestamp lastUpdatedDate;
@@ -224,6 +226,12 @@ public class PendingRegistrationEntity {
         return movingPostcode;
     }
 
+    @Basic
+    @Column(name = "moving_date", nullable = true)
+    public Date getMovingDate() {
+        return movingDate;
+    }
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "benefit_type_id")
     public BenefitTypeEntity getBenefitTypeEntity() {
@@ -258,6 +266,12 @@ public class PendingRegistrationEntity {
     @Column(name = "has_foreign_pension", nullable = true, length = 255)
     public String getHasForeignPension() {
         return hasForeignPension;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "occupation_type_id")
+    public OccupationTypeEntity getOccupationTypeEntity() {
+        return this.occupationTypeEntity;
     }
 
     @Basic

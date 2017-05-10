@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import uk.doh.oht.database.domain.PendingRegistrationData;
 import uk.doh.oht.database.domain.RegistrationData;
 import uk.doh.oht.database.domain.SearchData;
 import uk.doh.oht.database.service.DatabaseSearchResultsService;
@@ -39,6 +40,7 @@ public class SearchDatabaseControllerTest {
     @Mock
     private DatabaseSearchResultsService databaseSearchResultsService;
 
+    private List<PendingRegistrationData> pendingRegistrationDataList;
     private List<RegistrationData> registrationDataList;
     private List<SearchData> searchDataList;
 
@@ -59,6 +61,12 @@ public class SearchDatabaseControllerTest {
         final RegistrationData registrationData = new RegistrationData();
         registrationData.setRegistrationId(1l);
         registrationDataList.add(registrationData);
+
+        pendingRegistrationDataList = new ArrayList<>();
+        final PendingRegistrationData pendingRegistrationData = new PendingRegistrationData();
+        pendingRegistrationData.setPendingRegistrationId(1l);
+        pendingRegistrationDataList.add(pendingRegistrationData);
+
     }
 
     @Test
@@ -76,13 +84,13 @@ public class SearchDatabaseControllerTest {
 
     @Test
     public void testRetrievePendingRegistrations() throws Exception {
-        given(databaseSearchResultsService.getPendingRegistrations()).willReturn(registrationDataList);
+        given(databaseSearchResultsService.getPendingRegistrations()).willReturn(pendingRegistrationDataList);
 
         mockMvc.perform(MockMvcRequestBuilders.post(REST_SEARCH_PENDING_URI))
                 .andExpect(handler().methodName("retrievePendingRegistrations"))
                 .andExpect(handler().handlerType(SearchDatabaseController.class))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(content().string("[{\"registrationId\":1,\"userDetails\":null,\"addresses\":null,\"benefitType\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"startDate\":null,\"hasForeignPension\":null,\"requestedBy\":null,\"s073StartDate\":null,\"caseId\":null}]"));
+                .andExpect(content().string("[{\"pendingRegistrationId\":1,\"title\":null,\"firstName\":null,\"otherName\":null,\"lastName\":null,\"maidenName\":null,\"dateOfBirth\":null,\"gender\":null,\"nationality\":null,\"nino\":null,\"telephoneNumber\":null,\"emailAddress\":null,\"currentLineOne\":null,\"currentLineTwo\":null,\"currentLineThree\":null,\"currentLineFour\":null,\"currentLineFive\":null,\"currentLineSix\":null,\"currentCountry\":null,\"currentPostcode\":null,\"movingLineOne\":null,\"movingLineTwo\":null,\"movingLineThree\":null,\"movingLineFour\":null,\"movingLineFive\":null,\"movingLineSix\":null,\"movingCountry\":null,\"movingPostcode\":null,\"benefitTypey\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"hasForeignPension\":null,\"requestedBy\":null,\"creationDate\":null,\"lastUpdatedDate\":null,\"caseId\":null}]"));
 
     }
 

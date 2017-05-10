@@ -126,4 +126,13 @@
             <delete tableName="contact_detail_type"></delete>
         </rollback>
     </changeSet>
+    <changeSet author="pwhitehead" id="ohtd_002_9">
+        <insert tableName="occupation_type">
+            <column name="name" value="Pensioner"/>
+            <column name="description" value="Pensioner"/>
+        </insert>
+        <rollback>
+            <delete tableName="occupation_type"></delete>
+        </rollback>
+    </changeSet>
 </databaseChangeLog>

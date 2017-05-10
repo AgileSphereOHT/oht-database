@@ -44,7 +44,7 @@ public class DatabaseSearchResultsService {
         return entityResultConverter.convertRegistrationEntity(registrationEntityList);
     }
 
-    public List<RegistrationData> getPendingRegistrations() {
+    public List<PendingRegistrationData> getPendingRegistrations() {
         final RegistrationStatusEntity registrationStatusEntity = registrationStatusRepository.findByName(PENDING);
         return entityResultConverter.convertPendingRegistrationEntity(pendingRegistrationRepository.findByRegistrationStatusEntity(registrationStatusEntity));
     }
