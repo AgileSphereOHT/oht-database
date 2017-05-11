@@ -79,7 +79,7 @@ public class SearchDatabaseControllerTest {
                 .andExpect(handler().methodName("retrieveOpenRegistrations"))
                 .andExpect(handler().handlerType(SearchDatabaseController.class))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(content().string("[{\"registrationId\":1,\"userDetails\":null,\"addresses\":null,\"benefitType\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"startDate\":null,\"hasForeignPension\":null,\"requestedBy\":null,\"s073StartDate\":null,\"caseId\":null}]"));
+                .andExpect(content().string("[{\"registrationId\":1,\"userDetails\":null,\"addresses\":null,\"benefitType\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"startDate\":null,\"hasForeignPension\":null,\"requestedBy\":null,\"s073StartDate\":null,\"caseId\":null,\"modifiedByUserId\":null}]"));
     }
 
     @Test
@@ -90,7 +90,7 @@ public class SearchDatabaseControllerTest {
                 .andExpect(handler().methodName("retrievePendingRegistrations"))
                 .andExpect(handler().handlerType(SearchDatabaseController.class))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(content().string("[{\"pendingRegistrationId\":1,\"title\":null,\"firstName\":null,\"otherName\":null,\"lastName\":null,\"maidenName\":null,\"dateOfBirth\":null,\"gender\":null,\"nationality\":null,\"nino\":null,\"telephoneNumber\":null,\"emailAddress\":null,\"currentLineOne\":null,\"currentLineTwo\":null,\"currentLineThree\":null,\"currentLineFour\":null,\"currentLineFive\":null,\"currentLineSix\":null,\"currentCountry\":null,\"currentPostcode\":null,\"movingLineOne\":null,\"movingLineTwo\":null,\"movingLineThree\":null,\"movingLineFour\":null,\"movingLineFive\":null,\"movingLineSix\":null,\"movingCountry\":null,\"movingPostcode\":null,\"benefitTypey\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"hasForeignPension\":null,\"requestedBy\":null,\"creationDate\":null,\"lastUpdatedDate\":null,\"caseId\":null}]"));
+                .andExpect(content().string("[{\"pendingRegistrationId\":1,\"title\":null,\"firstName\":null,\"otherName\":null,\"lastName\":null,\"maidenName\":null,\"dateOfBirth\":null,\"gender\":null,\"nationality\":null,\"nino\":null,\"telephoneNumber\":null,\"emailAddress\":null,\"currentLineOne\":null,\"currentLineTwo\":null,\"currentLineThree\":null,\"currentLineFour\":null,\"currentLineFive\":null,\"currentLineSix\":null,\"currentCountry\":null,\"currentPostcode\":null,\"movingLineOne\":null,\"movingLineTwo\":null,\"movingLineThree\":null,\"movingLineFour\":null,\"movingLineFive\":null,\"movingLineSix\":null,\"movingCountry\":null,\"movingPostcode\":null,\"movingDate\":null,\"benefitType\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"hasForeignPension\":null,\"occupationType\":null,\"requestedBy\":null,\"creationDate\":null,\"lastUpdatedDate\":null,\"caseId\":null,\"startDate\":null,\"modifiedByUserId\":null}]"));
 
     }
 
