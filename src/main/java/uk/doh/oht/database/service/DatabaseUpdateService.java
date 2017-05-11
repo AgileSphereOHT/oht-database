@@ -34,6 +34,7 @@ public class DatabaseUpdateService {
                 registrationData.getS073StartDate().getDate(),
                 registrationData.getStartDate().getDate(),
                 registrationStatusEntity,
+                registrationData.getModifiedByUserId(),
                 registrationData.getRegistrationId());
         return Boolean.TRUE;
     }

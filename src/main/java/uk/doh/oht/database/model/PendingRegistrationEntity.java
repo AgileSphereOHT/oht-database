@@ -56,6 +56,7 @@ public class PendingRegistrationEntity {
     private String requestedBy;
     private Timestamp creationDate;
     private Timestamp lastUpdatedDate;
+    private String lastUpdatedBy;
     private String caseId;
 
     @Id
@@ -290,6 +291,12 @@ public class PendingRegistrationEntity {
     @Column(name = "last_updated_date", nullable = true)
     public Timestamp getLastUpdatedDate() {
         return lastUpdatedDate;
+    }
+
+    @Basic
+    @Column(name = "last_updated_by", nullable = true, length = 255)
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
     }
 
     @Transient

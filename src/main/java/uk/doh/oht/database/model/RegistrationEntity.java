@@ -29,6 +29,7 @@ public class RegistrationEntity {
     private RegistrationStatusEntity registrationStatusEntity;
     private CountryEntity countryEntity;
     private String caseId;
+    private String lastUpdatedBy;
 
     @Id
     @Column(name = "registration_id", nullable = false)
@@ -100,6 +101,12 @@ public class RegistrationEntity {
     @JoinColumn(name = "registration_status_id")
     public RegistrationStatusEntity getRegistrationStatusEntity() {
         return this.registrationStatusEntity;
+    }
+
+    @Basic
+    @Column(name = "last_updated_by", nullable = true, length = 255)
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
     }
 
     @Transient
