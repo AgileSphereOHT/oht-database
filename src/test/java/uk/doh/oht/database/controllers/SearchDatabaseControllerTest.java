@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,6 +19,7 @@ import uk.doh.oht.database.domain.RegistrationData;
 import uk.doh.oht.database.domain.SearchData;
 import uk.doh.oht.database.service.DatabaseSearchResultsService;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +38,8 @@ public class SearchDatabaseControllerTest {
     private final static String REST_SEARCH_PENDING_URI = "/oht-database/retrieve-pending-registrations";
 
     private MockMvc mockMvc;
+    @MockBean
+    private DataSource dataSource;
 
     @Mock
     private DatabaseSearchResultsService databaseSearchResultsService;
