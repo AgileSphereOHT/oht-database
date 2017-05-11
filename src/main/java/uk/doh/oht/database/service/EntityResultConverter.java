@@ -28,19 +28,20 @@ public class EntityResultConverter {
         while (results.hasNext()) {
             final RegistrationEntity registrationEntity = results.next();
             registrationDataList.add(new RegistrationData(
-                registrationEntity.getRegistrationId(),
-                createUserDetails(registrationEntity),
-                createAddresses(registrationEntity),
-                registrationEntity.getBenefitTypeEntity().getName(),
-                registrationEntity.getIssueType(),
-                registrationEntity.getRegistrationStatusEntity().getName(),
-                registrationEntity.getCountryEntity().getDescription(),
-                registrationEntity.getEntitlementDate(),
-                new StartDateFormDate(registrationEntity.getStartDate()),
-                null,
-                registrationEntity.getRequestedBy(),
-                null,
-                registrationEntity.getCaseId())
+                    registrationEntity.getRegistrationId(),
+                    createUserDetails(registrationEntity),
+                    createAddresses(registrationEntity),
+                    registrationEntity.getBenefitTypeEntity().getName(),
+                    registrationEntity.getIssueType(),
+                    registrationEntity.getRegistrationStatusEntity().getName(),
+                    registrationEntity.getCountryEntity().getDescription(),
+                    registrationEntity.getEntitlementDate(),
+                    new StartDateFormDate(registrationEntity.getStartDate()),
+                    null,
+                    registrationEntity.getRequestedBy(),
+                    null,
+                    registrationEntity.getCaseId(),
+                    null)
             );
         }
         return registrationDataList;
@@ -99,6 +100,7 @@ public class EntityResultConverter {
                 pendingRegistration.getCreationDate(),
                 pendingRegistration.getLastUpdatedDate(),
                 pendingRegistration.getCaseId(),
+                null,
                 null
         );
     }

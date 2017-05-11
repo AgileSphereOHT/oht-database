@@ -31,4 +31,5 @@ public class RegistrationData implements Serializable {
     private String requestedBy;
     private StartDateFormDate s073StartDate;
     private String caseId;
+    private String modifiedByUserId;
 }

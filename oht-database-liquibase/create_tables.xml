@@ -21,7 +21,9 @@
             <column name="nationality_id" type="BIGINT"/>
             <column name="nino" type="VARCHAR(255)"/>
             <column name="creation_date" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR2(255)"/>
             <column name="last_updated_date" type="DATETIME"/>
+            <column name="last_updated_by" type="VARCHAR2(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="pwhitehead" id="ohtd_001_2">
@@ -69,7 +71,9 @@
             <column name="start_date" type="DATETIME"/>
             <column name="end_date" type="DATETIME"/>
             <column name="creation_date" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR2(255)"/>
             <column name="last_updated_date" type="DATETIME"/>
+            <column name="last_updated_by" type="VARCHAR2(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="pwhitehead" id="ohtd_001_6">
@@ -97,6 +101,10 @@
             <column name="s073_start_date" type="DATE"/>
             <column name="start_date" type="DATE"/>
             <column name="end_date" type="DATE"/>
+            <column name="creation_date" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR2(255)"/>
+            <column name="last_updated_date" type="DATETIME"/>
+            <column name="last_updated_by" type="VARCHAR2(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="pwhitehead" id="ohtd_001_8">
@@ -204,7 +212,9 @@
             <column name="has_foreign_pension" type="VARCHAR2(255)"/>
             <column name="occupation_type_id" type="BIGINT"/>
             <column name="creation_date" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR2(255)"/>
             <column name="last_updated_date" type="DATETIME"/>
+            <column name="last_updated_by" type="VARCHAR2(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="pwhitehead" id="ohtd_001_16">

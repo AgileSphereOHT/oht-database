@@ -56,4 +56,5 @@ public class PendingRegistrationData implements Serializable {
     private Date lastUpdatedDate;
     private String caseId;
     private StartDateFormDate startDate;
+    private String modifiedByUserId;
 }
