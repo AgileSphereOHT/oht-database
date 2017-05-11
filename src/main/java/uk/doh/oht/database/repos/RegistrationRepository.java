@@ -19,7 +19,7 @@ public interface RegistrationRepository extends CrudRepository<RegistrationEntit
             final String firstName, final String lastName, final Date dateOfBirth);
 
     @Modifying
-    @Query("update RegistrationEntity re set re.s073StartDate = ?1, re.startDate = ?2, re.registrationStatusEntity = ?3, re.lastUpdatedBy = ?4 where re.registrationId = ?5")
+    @Query("update RegistrationEntity re set re.s073StartDate = ?1, re.startDate = ?2, re.registrationStatusEntity = ?3, re.lastUpdatedBy = ?4, re.lastUpdatedDate = CURRENT_TIMESTAMP() where re.registrationId = ?5")
     void setRegistrationDatesById(final Date s073StartDate,
                                   final Date startDate,
                                   final RegistrationStatusEntity registrationStatusEntity,

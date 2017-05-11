@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by peterwhitehead on 05/05/2017.
@@ -30,6 +31,7 @@ public class RegistrationEntity {
     private CountryEntity countryEntity;
     private String caseId;
     private String lastUpdatedBy;
+    private Timestamp lastUpdatedDate;
 
     @Id
     @Column(name = "registration_id", nullable = false)
@@ -107,6 +109,12 @@ public class RegistrationEntity {
     @Column(name = "last_updated_by", nullable = true, length = 255)
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
+    }
+
+    @Basic
+    @Column(name = "last_updated_date", nullable = true)
+    public Timestamp getLastUpdatedDate() {
+        return lastUpdatedDate;
     }
 
     @Transient
