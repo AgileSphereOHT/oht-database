@@ -78,13 +78,13 @@ public class RegistrationEntity {
         return s073StartDate;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "citizen_status_id")
     public CitizenStatusEntity getCitizenStatusEntity() {
         return this.citizenStatusEntity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "benefit_type_id")
     public BenefitTypeEntity getBenefitTypeEntity() {
         return this.benefitTypeEntity;
@@ -96,13 +96,13 @@ public class RegistrationEntity {
         return this.citizenEntity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "country_id")
     public CountryEntity getCountryEntity() {
         return this.countryEntity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "registration_status_id")
     public RegistrationStatusEntity getRegistrationStatusEntity() {
         return this.registrationStatusEntity;

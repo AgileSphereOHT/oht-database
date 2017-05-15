@@ -103,13 +103,13 @@ public class PendingRegistrationEntity {
         return dateOfBirth;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "gender_id")
     public GenderEntity getGenderEntity() {
         return this.genderEntity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "nationality_id")
     public NationalityEntity getNationalityEntity() {
         return this.nationalityEntity;
@@ -169,7 +169,7 @@ public class PendingRegistrationEntity {
         return currentLineSix;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(referencedColumnName = "country_id", name = "current_country_id")
     public CountryEntity getCurrentCountryEntity() {
         return this.currentCountryEntity;
@@ -217,7 +217,7 @@ public class PendingRegistrationEntity {
         return movingLineSix;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(referencedColumnName = "country_id", name = "moving_country_id")
     public CountryEntity getMovingCountryEntity() {
         return this.movingCountryEntity;
@@ -235,7 +235,7 @@ public class PendingRegistrationEntity {
         return movingDate;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "benefit_type_id")
     public BenefitTypeEntity getBenefitTypeEntity() {
         return this.benefitTypeEntity;
@@ -247,13 +247,13 @@ public class PendingRegistrationEntity {
         return issueType;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "registration_status_id")
     public RegistrationStatusEntity getRegistrationStatusEntity() {
         return this.registrationStatusEntity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "country_id")
     public CountryEntity getCountryEntity() {
         return this.countryEntity;
@@ -271,7 +271,7 @@ public class PendingRegistrationEntity {
         return hasForeignPension;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "occupation_type_id")
     public OccupationTypeEntity getOccupationTypeEntity() {
         return this.occupationTypeEntity;

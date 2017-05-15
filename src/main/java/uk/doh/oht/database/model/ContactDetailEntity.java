@@ -33,7 +33,7 @@ public class ContactDetailEntity {
         return contact;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "contact_detail_type_id")
     public ContactDetailTypeEntity getContactDetailTypeEntity() {
         return this.contactDetailTypeEntity;

@@ -98,13 +98,13 @@ public class CitizenEntity {
         return this.addressEntityList;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "gender_id")
     public GenderEntity getGenderEntity() {
         return this.genderEntity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "nationality_id")
     public NationalityEntity getNationalityEntity() {
         return this.nationalityEntity;

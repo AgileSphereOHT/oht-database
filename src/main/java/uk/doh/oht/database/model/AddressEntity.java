@@ -102,13 +102,13 @@ public class AddressEntity {
         return endDate;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "address_type_id")
     public AddressTypeEntity getAddressTypeEntity() {
         return this.addressTypeEntity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "country_id")
     public CountryEntity getCountryEntity() {
         return this.countryEntity;

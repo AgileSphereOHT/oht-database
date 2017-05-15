@@ -10,4 +10,6 @@ import uk.doh.oht.database.model.CountryEntity;
 @Repository
 public interface CountryRepository extends CrudRepository<CountryEntity, Long> {
     CountryEntity findByName(final String name);
+
+    CountryEntity findByDescription(final String currentCountry);
 }
