@@ -40,7 +40,7 @@ VALUES (currval('citizen_citizen_id_seq'), currval('contact_detail_contact_detai
 --insert registration
 INSERT INTO public.registration(
   citizen_id, requested_by, citizen_status_id, benefit_type_id, issue_type, registration_status_id, country_id, entitlement_date, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
-VALUES (currval('citizen_citizen_id_seq'), 'Customer', 1, 1, 'Main', 2, 1, current_date, current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
+VALUES (currval('citizen_citizen_id_seq'), 'Customer', 1, 1, 'Main', 1, 1, current_date, current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
 
 --insert pending registration
 INSERT INTO public.pending_registration(
