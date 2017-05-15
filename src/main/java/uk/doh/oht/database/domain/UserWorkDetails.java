@@ -18,7 +18,11 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserWorkDetails implements Serializable {
     private String userFullName;
-    private Long numberRequests;
-    private Long numberRegistrations;
-    private Long numberCancellations;
+    private Long numberDailyRequests;
+    private Long numberDailyRegistrations;
+    private Long numberDailyCancellations;
+
+    private Long numberMonthlyRequests;
+    private Long numberMonthlyRegistrations;
+    private Long numberMonthlyCancellations;
 }

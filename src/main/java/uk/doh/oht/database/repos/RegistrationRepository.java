@@ -28,8 +28,14 @@ public interface RegistrationRepository extends CrudRepository<RegistrationEntit
                                   final long registrationId);
 
     @Query("select coalesce(count(re), 0) from RegistrationEntity re where re.lastUpdatedBy=?1 and date(re.lastUpdatedDate) = current_date() and re.registrationStatusEntity.registrationStatusId = ?2")
-    Long findCountOfCompletedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(final String lastUpdatedBy, final Long registrationStatusId);
+    Long findDailyCountOfCompletedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(final String lastUpdatedBy, final Long registrationStatusId);
 
     @Query("select coalesce(count(re), 0) from RegistrationEntity re where re.lastUpdatedBy=?1 and date(re.lastUpdatedDate) = current_date() and re.registrationStatusEntity.registrationStatusId = ?2")
-    Long findCountOfRejectedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(final String userName, final Long registrationStatusId);
+    Long findDailyCountOfRejectedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(final String userName, final Long registrationStatusId);
+
+    @Query("select coalesce(count(re), 0) from RegistrationEntity re where re.lastUpdatedBy=?1 and MONTH(re.lastUpdatedDate) = MONTH(current_date()) and re.registrationStatusEntity.registrationStatusId = ?2")
+    Long findMonthlyCountOfCompletedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(final String userName, final long registrationStatusId);
+
+    @Query("select coalesce(count(re), 0) from RegistrationEntity re where re.lastUpdatedBy=?1 and MONTH(re.lastUpdatedDate) = MONTH(current_date()) and re.registrationStatusEntity.registrationStatusId = ?2")
+    Long findMonthlyCountOfRejectedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(final String userName, final long registrationStatusId);
 }

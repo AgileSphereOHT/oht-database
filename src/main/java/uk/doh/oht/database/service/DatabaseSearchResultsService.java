@@ -71,19 +71,31 @@ public class DatabaseSearchResultsService {
     }
 
     public UserWorkDetails getUserUsage(final String userName) {
-        Long countRegistrations =
-                registrationRepository.findCountOfCompletedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
+        final Long countDailyRegistrations =
+                registrationRepository.findDailyCountOfCompletedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
                         userName, entityRepositoryHelper.getCompletedStatus().getRegistrationStatusId());
-        Long countRejections =
-                registrationRepository.findCountOfRejectedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
+        final Long countDailyRejections =
+                registrationRepository.findDailyCountOfRejectedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
                         userName, entityRepositoryHelper.getRejectedStatus().getRegistrationStatusId());
-        Long countS1Requests =
-                pendingRegistrationRepository.findCountOfS1RequestsByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
+        final Long countDailyS1Requests =
+                pendingRegistrationRepository.findDailyCountOfS1RequestsByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
+                        userName, entityRepositoryHelper.getPendingStatus().getRegistrationStatusId());
+        final Long countMonthlyRegistrations =
+                registrationRepository.findMonthlyCountOfCompletedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
+                        userName, entityRepositoryHelper.getCompletedStatus().getRegistrationStatusId());
+        final Long countMonthlyRejections =
+                registrationRepository.findMonthlyCountOfRejectedByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
+                        userName, entityRepositoryHelper.getRejectedStatus().getRegistrationStatusId());
+        final Long countMonthlyS1Requests =
+                pendingRegistrationRepository.findMonthlyCountOfS1RequestsByLastUpdateByAndLastUpdateDateAndRegistrationStatusId(
                         userName, entityRepositoryHelper.getPendingStatus().getRegistrationStatusId());
         return UserWorkDetails.builder()
-                .numberRegistrations(countRegistrations)
-                .numberCancellations(countRejections)
-                .numberRequests(countS1Requests)
+                .numberDailyRegistrations(countDailyRegistrations)
+                .numberDailyCancellations(countDailyRejections)
+                .numberDailyRequests(countDailyS1Requests)
+                .numberMonthlyRegistrations(countMonthlyRegistrations)
+                .numberMonthlyCancellations(countMonthlyRejections)
+                .numberMonthlyRequests(countMonthlyS1Requests)
                 .build();
     }
 }
