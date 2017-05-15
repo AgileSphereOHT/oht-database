@@ -20,6 +20,7 @@ public class CitizenAddressEntity {
     private Long addressId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "citizen_address_id", nullable = false)
     public long getCitizenAddressId() {
         return citizenAddressId;

@@ -3,7 +3,7 @@ package uk.doh.oht.database.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -32,8 +32,11 @@ public class RegistrationEntity {
     private String caseId;
     private String lastUpdatedBy;
     private Timestamp lastUpdatedDate;
+    private String createdBy;
+    private Timestamp creationDate;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "registration_id", nullable = false)
     public long getRegistrationId() {
         return registrationId;
@@ -103,6 +106,18 @@ public class RegistrationEntity {
     @JoinColumn(name = "registration_status_id")
     public RegistrationStatusEntity getRegistrationStatusEntity() {
         return this.registrationStatusEntity;
+    }
+
+    @Basic
+    @Column(name = "created_by", nullable = true, length = 255)
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    @Basic
+    @Column(name = "creation_date", nullable = true)
+    public Timestamp getCreationDate() {
+        return creationDate;
     }
 
     @Basic

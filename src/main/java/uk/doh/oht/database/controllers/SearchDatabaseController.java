@@ -1,6 +1,7 @@
 package uk.doh.oht.database.controllers;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import uk.doh.oht.database.domain.PendingRegistrationData;
 import uk.doh.oht.database.domain.SearchData;
 import uk.doh.oht.database.domain.RegistrationData;
+import uk.doh.oht.database.domain.UserWorkDetails;
 import uk.doh.oht.database.service.DatabaseSearchResultsService;
 
 import javax.inject.Inject;
@@ -17,6 +19,7 @@ import java.util.List;
 /**
  * Created by peterwhitehead on 04/05/2017.
  */
+@Slf4j
 @RestController
 public class SearchDatabaseController {
     private final DatabaseSearchResultsService databaseSearchResultsService;
@@ -42,5 +45,14 @@ public class SearchDatabaseController {
     )
     public ResponseEntity<List<PendingRegistrationData>> retrievePendingRegistrations() {
         return ResponseEntity.ok().body(databaseSearchResultsService.getPendingRegistrations());
+    }
+
+    @PostMapping(value = "/oht-database/retrieve-user-work-details", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(
+            value = "Gets count of users changes",
+            notes = "Send a request to return a count of user changes from database"
+    )
+    public ResponseEntity<UserWorkDetails> retrieveUserUsage(@RequestBody final String userName) {
+        return ResponseEntity.ok().body(databaseSearchResultsService.getUserUsage(userName));
     }
 }

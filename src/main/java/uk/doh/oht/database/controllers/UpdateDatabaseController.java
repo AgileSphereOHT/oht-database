@@ -1,6 +1,7 @@
 package uk.doh.oht.database.controllers;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import javax.inject.Inject;
 /**
  * Created by peterwhitehead on 09/05/2017.
  */
+@Slf4j
 @RestController
 public class UpdateDatabaseController {
     private final DatabaseUpdateService databaseUpdateService;
@@ -25,8 +27,8 @@ public class UpdateDatabaseController {
 
     @PostMapping(value = "/oht-database/update-registration", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(
-            value = "Gets a list of all registrations matching search data criteria",
-            notes = "Send a request to return registrations matching all search data criteria in database"
+            value = "updates the registration data",
+            notes = "updates registration data in database"
     )
     public ResponseEntity<Boolean> updateRegistration(@RequestBody final RegistrationData registrationData) {
         return ResponseEntity.ok().body(databaseUpdateService.updateRegistration(registrationData));

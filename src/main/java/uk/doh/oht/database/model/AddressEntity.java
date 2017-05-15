@@ -27,13 +27,16 @@ public class AddressEntity {
     private String correspondenceAddress;
     private Timestamp startDate;
     private Timestamp endDate;
-    private Timestamp creationDate;
-    private Timestamp lastUpdatedDate;
     private AddressTypeEntity addressTypeEntity;
     private CountryEntity countryEntity;
     private CitizenEntity citizenEntity;
+    private String lastUpdatedBy;
+    private Timestamp lastUpdatedDate;
+    private String createdBy;
+    private Timestamp creationDate;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id", nullable = false)
     public long getAddressId() {
         return addressId;
@@ -99,18 +102,6 @@ public class AddressEntity {
         return endDate;
     }
 
-    @Basic
-    @Column(name = "creation_date", nullable = true)
-    public Timestamp getCreationDate() {
-        return creationDate;
-    }
-
-    @Basic
-    @Column(name = "last_updated_date", nullable = true)
-    public Timestamp getLastUpdatedDate() {
-        return lastUpdatedDate;
-    }
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_type_id")
     public AddressTypeEntity getAddressTypeEntity() {
@@ -127,5 +118,29 @@ public class AddressEntity {
     @JoinTable(name = "citizen_address", joinColumns = { @JoinColumn(name = "address_id") }, inverseJoinColumns = { @JoinColumn(name = "citizen_id") })
     public CitizenEntity getCitizenEntity() {
         return citizenEntity;
+    }
+
+    @Basic
+    @Column(name = "created_by", nullable = true, length = 255)
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    @Basic
+    @Column(name = "creation_date", nullable = true)
+    public Timestamp getCreationDate() {
+        return creationDate;
+    }
+
+    @Basic
+    @Column(name = "last_updated_date", nullable = true)
+    public Timestamp getLastUpdatedDate() {
+        return lastUpdatedDate;
+    }
+
+    @Basic
+    @Column(name = "last_updated_by", nullable = true, length = 255)
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
     }
 }

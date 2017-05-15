@@ -21,6 +21,7 @@ public class ContactDetailEntity {
     private CitizenEntity citizenEntity;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contact_detail_id", nullable = false)
     public long getContactDetailId() {
         return contactDetailId;

@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import uk.doh.oht.database.domain.RegistrationData;
 import uk.doh.oht.database.service.DatabaseUpdateService;
+import uk.doh.oht.database.service.EntityRepositoryHelper;
 
 import javax.sql.DataSource;
 
@@ -30,6 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
+@MockBean(EntityRepositoryHelper.class)
 public class UpdateDatabaseControllerTest {
     private final static String REST_UPDATE_URI = "/oht-database/update-registration";
 

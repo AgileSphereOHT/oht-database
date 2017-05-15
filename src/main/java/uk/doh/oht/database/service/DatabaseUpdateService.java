@@ -17,23 +17,21 @@ import javax.transaction.Transactional;
 @Service
 public class DatabaseUpdateService {
     private final RegistrationRepository registrationRepository;
-    private final RegistrationStatusRepository registrationStatusRepository;
+    private final EntityRepositoryHelper entityRepositoryHelper;
 
     @Inject
     public DatabaseUpdateService(final RegistrationRepository registrationRepository,
-                                 final RegistrationStatusRepository registrationStatusRepository) {
+                                 final EntityRepositoryHelper entityRepositoryHelper) {
         this.registrationRepository = registrationRepository;
-        this.registrationStatusRepository = registrationStatusRepository;
+        this.entityRepositoryHelper = entityRepositoryHelper;
     }
 
     @Transactional
     public Boolean updateRegistration(final RegistrationData registrationData) {
-        RegistrationStatusEntity registrationStatusEntity =
-                registrationStatusRepository.findByName(registrationData.getRegistrationStatus());
         registrationRepository.setRegistrationDatesById(
                 registrationData.getS073StartDate().getDate(),
                 registrationData.getStartDate().getDate(),
-                registrationStatusEntity,
+                entityRepositoryHelper.getCompletedStatus(),
                 registrationData.getModifiedByUserId(),
                 registrationData.getRegistrationId());
         return Boolean.TRUE;

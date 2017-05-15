@@ -4,7 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -28,14 +28,17 @@ public class CitizenEntity {
     private Date dateOfBirth;
     private String nino;
     private List<ContactDetailEntity> contactDetailEntityList;
-    private Timestamp creationDate;
-    private Timestamp lastUpdatedDate;
     private List<AddressEntity> addressEntityList;
     private GenderEntity genderEntity;
     private NationalityEntity nationalityEntity;
     private List<RegistrationEntity> registrationEntity;
+    private String lastUpdatedBy;
+    private Timestamp lastUpdatedDate;
+    private String createdBy;
+    private Timestamp creationDate;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "citizen_id", nullable = false)
     public long getCitizenId() {
         return citizenId;
@@ -89,18 +92,6 @@ public class CitizenEntity {
         return this.contactDetailEntityList;
     }
 
-    @Basic
-    @Column(name = "creation_date", nullable = true)
-    public Timestamp getCreationDate() {
-        return creationDate;
-    }
-
-    @Basic
-    @Column(name = "last_updated_date", nullable = true)
-    public Timestamp getLastUpdatedDate() {
-        return lastUpdatedDate;
-    }
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "citizen_address", joinColumns = { @JoinColumn(name = "citizen_id") }, inverseJoinColumns = { @JoinColumn(name = "address_id") })
     public List<AddressEntity> getAddressEntityList() {
@@ -123,5 +114,29 @@ public class CitizenEntity {
     @Where(clause = "registration_status_id in (1, 3)")
     public List<RegistrationEntity> getRegistrationEntity() {
         return registrationEntity;
+    }
+
+    @Basic
+    @Column(name = "created_by", nullable = true, length = 255)
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    @Basic
+    @Column(name = "creation_date", nullable = true)
+    public Timestamp getCreationDate() {
+        return creationDate;
+    }
+
+    @Basic
+    @Column(name = "last_updated_date", nullable = true)
+    public Timestamp getLastUpdatedDate() {
+        return lastUpdatedDate;
+    }
+
+    @Basic
+    @Column(name = "last_updated_by", nullable = true, length = 255)
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
     }
 }

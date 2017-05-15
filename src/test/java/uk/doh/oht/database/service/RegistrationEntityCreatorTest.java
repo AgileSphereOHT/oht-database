@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 /**
  * Created by peterwhitehead on 15/05/2017.
  */
-public class EntityResultConverterTest {
+public class RegistrationEntityCreatorTest {
 
     @Before
     public void setUp() throws Exception {
@@ -16,12 +16,12 @@ public class EntityResultConverterTest {
     }
 
     @Test
-    public void testConvertRegistrationEntity() throws Exception {
+    public void testCreateRegistrationEntity() throws Exception {
 
     }
 
     @Test
-    public void testConvertPendingRegistrationEntity() throws Exception {
+    public void testCreateCitizenEntity() throws Exception {
 
     }
 }

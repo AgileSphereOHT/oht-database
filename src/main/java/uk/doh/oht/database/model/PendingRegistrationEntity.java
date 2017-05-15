@@ -55,11 +55,13 @@ public class PendingRegistrationEntity {
     private OccupationTypeEntity occupationTypeEntity;
     private String requestedBy;
     private Timestamp creationDate;
+    private String createdBy;
     private Timestamp lastUpdatedDate;
     private String lastUpdatedBy;
     private String caseId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pending_registration_id", nullable = false)
     public long getPendingRegistrationId() {
         return pendingRegistrationId;
@@ -279,6 +281,12 @@ public class PendingRegistrationEntity {
     @Column(name = "requested_by", nullable = true, length = 255)
     public String getRequestedBy() {
         return requestedBy;
+    }
+
+    @Basic
+    @Column(name = "created_by", nullable = true, length = 255)
+    public String getCreatedBy() {
+        return createdBy;
     }
 
     @Basic
