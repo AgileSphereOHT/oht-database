@@ -4,8 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.doh.oht.database.domain.PendingRegistrationData;
 import uk.doh.oht.database.model.RegistrationEntity;
+import uk.doh.oht.database.repos.PendingRegistrationRepository;
 import uk.doh.oht.database.repos.RegistrationRepository;
-import uk.doh.oht.database.repos.RegistrationStatusRepository;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -17,20 +17,30 @@ import javax.transaction.Transactional;
 @Service
 public class DatabaseCreateService {
     private final RegistrationRepository registrationRepository;
+    private final PendingRegistrationRepository pendingRegistrationRepository;
     private final RegistrationEntityCreator registrationEntityCreator;
+    private final EntityRepositoryHelper entityRepositoryHelper;
 
     @Inject
     public DatabaseCreateService(final RegistrationRepository registrationRepository,
-                                 final RegistrationStatusRepository registrationStatusRepository,
-                                 final RegistrationEntityCreator registrationEntityCreator) {
+                                 final RegistrationEntityCreator registrationEntityCreator,
+                                 final PendingRegistrationRepository pendingRegistrationRepository,
+                                 final EntityRepositoryHelper entityRepositoryHelper) {
         this.registrationRepository = registrationRepository;
         this.registrationEntityCreator = registrationEntityCreator;
+        this.pendingRegistrationRepository = pendingRegistrationRepository;
+        this.entityRepositoryHelper = entityRepositoryHelper;
     }
 
     @Transactional
     public Boolean createS1Request(final PendingRegistrationData pendingRegistrationData) {
         final RegistrationEntity registrationEntity = registrationEntityCreator.createRegistrationEntity(pendingRegistrationData);
         registrationRepository.save(registrationEntity);
+        pendingRegistrationRepository.setPendingRegistrationDatesById(
+                entityRepositoryHelper.getCompletedStatus(),
+                pendingRegistrationData.getModifiedByUserId(),
+                pendingRegistrationData.getPendingRegistrationId()
+        );
         return Boolean.TRUE;
     }
 }
