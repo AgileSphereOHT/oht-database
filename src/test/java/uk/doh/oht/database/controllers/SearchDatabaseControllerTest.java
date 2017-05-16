@@ -35,13 +35,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @MockBean(EntityRepositoryHelper.class)
+@MockBean(DataSource.class)
 public class SearchDatabaseControllerTest {
     private final static String REST_SEARCH_OPEN_URI = "/oht-database/retrieve-registrations";
     private final static String REST_SEARCH_PENDING_URI = "/oht-database/retrieve-pending-registrations";
 
     private MockMvc mockMvc;
-    @MockBean
-    private DataSource dataSource;
 
     @Mock
     private DatabaseSearchResultsService databaseSearchResultsService;
@@ -96,7 +95,7 @@ public class SearchDatabaseControllerTest {
                 .andExpect(handler().methodName("retrievePendingRegistrations"))
                 .andExpect(handler().handlerType(SearchDatabaseController.class))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(content().string("[{\"pendingRegistrationId\":1,\"title\":null,\"firstName\":null,\"otherName\":null,\"lastName\":null,\"maidenName\":null,\"dateOfBirth\":null,\"gender\":null,\"nationality\":null,\"nino\":null,\"telephoneNumber\":null,\"emailAddress\":null,\"currentLineOne\":null,\"currentLineTwo\":null,\"currentLineThree\":null,\"currentLineFour\":null,\"currentLineFive\":null,\"currentLineSix\":null,\"currentCountry\":null,\"currentPostcode\":null,\"movingLineOne\":null,\"movingLineTwo\":null,\"movingLineThree\":null,\"movingLineFour\":null,\"movingLineFive\":null,\"movingLineSix\":null,\"movingCountry\":null,\"movingPostcode\":null,\"movingDate\":null,\"benefitType\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"hasForeignPension\":null,\"occupationType\":null,\"requestedBy\":null,\"creationDate\":null,\"lastUpdatedDate\":null,\"caseId\":null,\"startDate\":null,\"modifiedByUserId\":null}]"));
+                .andExpect(content().string("[{\"pendingRegistrationId\":1,\"title\":null,\"firstName\":null,\"otherName\":null,\"lastName\":null,\"maidenName\":null,\"dateOfBirth\":null,\"gender\":null,\"nationality\":null,\"nino\":null,\"telephoneNumber\":null,\"emailAddress\":null,\"currentLineOne\":null,\"currentLineTwo\":null,\"currentLineThree\":null,\"currentLineFour\":null,\"currentLineFive\":null,\"currentLineSix\":null,\"currentCountry\":null,\"currentPostcode\":null,\"movingLineOne\":null,\"movingLineTwo\":null,\"movingLineThree\":null,\"movingLineFour\":null,\"movingLineFive\":null,\"movingLineSix\":null,\"movingCountry\":null,\"movingPostcode\":null,\"movingDate\":null,\"benefitType\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"hasForeignPension\":null,\"occupationType\":null,\"requestedBy\":null,\"caseId\":null,\"startDate\":null,\"modifiedByUserId\":null}]"));
 
     }
 

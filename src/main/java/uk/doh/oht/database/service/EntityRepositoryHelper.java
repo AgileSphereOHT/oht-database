@@ -25,7 +25,6 @@ public class EntityRepositoryHelper {
     private final ContactDetailTypeRepository contactDetailTypeRepository;
     private final AddressTypeRepository addressTypeRepository;
     private final CountryRepository countryRepository;
-    private final RegistrationStatusRepository registrationStatusRepository;
     private final BenefitTypeRepository benefitTypeRepository;
     private final CitizenStatusRepository citizenStatusRepository;
 
@@ -47,7 +46,6 @@ public class EntityRepositoryHelper {
         this.contactDetailTypeRepository = contactDetailTypeRepository;
         this.addressTypeRepository = addressTypeRepository;
         this.countryRepository = countryRepository;
-        this.registrationStatusRepository = registrationStatusRepository;
         this.benefitTypeRepository = benefitTypeRepository;
         this.citizenStatusRepository = citizenStatusRepository;
         this.pendingDelayedStatuses = registrationStatusRepository.findByNameIn(Arrays.asList(PENDING, DELAYED));
@@ -82,10 +80,6 @@ public class EntityRepositoryHelper {
 
     public BenefitTypeEntity retrieveBenefitTypeEntity(final String name) {
         return benefitTypeRepository.findByName(name);
-    }
-
-    public RegistrationStatusEntity retrieveRegistrationStatusEntity(final String name) {
-        return registrationStatusRepository.findByName(name);
     }
 
     public CitizenStatusEntity retrieveCitizenStatusEntity(final String name) {

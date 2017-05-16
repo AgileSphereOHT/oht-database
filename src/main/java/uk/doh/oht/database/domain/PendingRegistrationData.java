@@ -10,6 +10,7 @@ import java.util.Date;
 /**
  * Created by peterwhitehead on 10/05/2017.
  */
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -52,8 +53,6 @@ public class PendingRegistrationData implements Serializable {
     private String hasForeignPension;
     private String occupationType;
     private String requestedBy;
-    private Date creationDate;
-    private Date lastUpdatedDate;
     private String caseId;
     private StartDateFormDate startDate;
     private String modifiedByUserId;

@@ -32,14 +32,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @MockBean(EntityRepositoryHelper.class)
+@MockBean(DataSource.class)
 public class UpdateDatabaseControllerTest {
     private final static String REST_UPDATE_URI = "/oht-database/update-registration";
 
     private MockMvc mockMvc;
     private ObjectWriter objectWriter;
-
-    @MockBean
-    private DataSource dataSource;
 
     @Mock
     private DatabaseUpdateService databaseUpdateService;

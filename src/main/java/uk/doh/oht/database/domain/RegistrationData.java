@@ -2,6 +2,7 @@ package uk.doh.oht.database.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.doh.oht.database.validation.StartDateFormDate;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by peterwhitehead on 04/05/2017.
  */
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

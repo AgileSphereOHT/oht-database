@@ -67,8 +67,8 @@ public class EntityResultConverter {
                 pendingRegistration.getLastName(),
                 pendingRegistration.getMaidenName(),
                 pendingRegistration.getDateOfBirth(),
-                pendingRegistration.getGenderEntity().getDescription(),
-                pendingRegistration.getNationalityEntity().getDescription(),
+                pendingRegistration.getGenderEntity().getName(),
+                pendingRegistration.getNationalityEntity().getName(),
                 pendingRegistration.getNino(),
                 pendingRegistration.getTelephoneNumber(),
                 pendingRegistration.getEmailAddress(),
@@ -89,19 +89,17 @@ public class EntityResultConverter {
                 pendingRegistration.getMovingCountryEntity().getDescription(),
                 pendingRegistration.getMovingPostcode(),
                 pendingRegistration.getMovingDate(),
-                pendingRegistration.getBenefitTypeEntity().getDescription(),
+                pendingRegistration.getBenefitTypeEntity().getName(),
                 pendingRegistration.getIssueType(),
-                pendingRegistration.getRegistrationStatusEntity().getDescription(),
-                pendingRegistration.getCountryEntity().getName(),
+                pendingRegistration.getRegistrationStatusEntity().getName(),
+                pendingRegistration.getCountryEntity().getDescription(),
                 pendingRegistration.getEntitlementDate(),
                 pendingRegistration.getHasForeignPension(),
-                pendingRegistration.getOccupationTypeEntity().getDescription(),
+                pendingRegistration.getOccupationTypeEntity().getName(),
                 pendingRegistration.getRequestedBy(),
-                pendingRegistration.getCreationDate(),
-                pendingRegistration.getLastUpdatedDate(),
                 pendingRegistration.getCaseId(),
                 null,
-                null
+                pendingRegistration.getLastUpdatedBy()
         );
     }
 
