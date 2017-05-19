@@ -5,9 +5,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import uk.doh.oht.database.domain.RegistrationData;
+import uk.doh.oht.db.domain.RegistrationData;
 import uk.doh.oht.database.repos.RegistrationRepository;
-import uk.doh.oht.database.validation.StartDateFormDate;
+import uk.doh.oht.validation.StartDateFormDate;
 
 import java.util.Date;
 

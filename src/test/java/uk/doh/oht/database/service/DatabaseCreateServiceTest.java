@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import uk.doh.oht.database.domain.PendingRegistrationData;
+import uk.doh.oht.db.domain.PendingRegistrationData;
 import uk.doh.oht.database.model.RegistrationEntity;
 import uk.doh.oht.database.repos.PendingRegistrationRepository;
 import uk.doh.oht.database.repos.RegistrationRepository;

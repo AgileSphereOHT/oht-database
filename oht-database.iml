@@ -172,6 +172,7 @@
     <orderEntry type="library" name="Gradle: org.apache.lucene:lucene-queries:5.5.4" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-entitymanager:5.2.10.Final" level="project" />
     <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy:1.6.6" level="project" />
+    <orderEntry type="library" name="Gradle: uk.doh.oht:oht-common:1.0.0-SNAPSHOT" level="project" />
   </component>
   <component name="sonarModuleSettings">
     <option name="alternativeWorkingDirPath" value="" />

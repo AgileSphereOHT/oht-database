@@ -2,7 +2,7 @@ package uk.doh.oht.database.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import uk.doh.oht.database.domain.PendingRegistrationData;
+import uk.doh.oht.db.domain.PendingRegistrationData;
 import uk.doh.oht.database.model.*;
 
 import java.sql.Timestamp;

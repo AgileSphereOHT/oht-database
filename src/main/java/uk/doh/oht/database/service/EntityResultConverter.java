@@ -3,9 +3,9 @@ package uk.doh.oht.database.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-import uk.doh.oht.database.domain.*;
+import uk.doh.oht.db.domain.*;
 import uk.doh.oht.database.model.*;
-import uk.doh.oht.database.validation.StartDateFormDate;
+import uk.doh.oht.validation.StartDateFormDate;
 
 import java.util.ArrayList;
 import java.util.Iterator;

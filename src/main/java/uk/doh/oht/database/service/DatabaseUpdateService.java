@@ -2,10 +2,8 @@ package uk.doh.oht.database.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import uk.doh.oht.database.domain.RegistrationData;
-import uk.doh.oht.database.model.RegistrationStatusEntity;
+import uk.doh.oht.db.domain.RegistrationData;
 import uk.doh.oht.database.repos.RegistrationRepository;
-import uk.doh.oht.database.repos.RegistrationStatusRepository;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;

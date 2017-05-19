@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import uk.doh.oht.database.domain.RegistrationData;
+import uk.doh.oht.db.domain.RegistrationData;
 import uk.doh.oht.database.service.DatabaseUpdateService;
 
 import javax.inject.Inject;

@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import uk.doh.oht.database.domain.PendingRegistrationData;
+import uk.doh.oht.db.domain.PendingRegistrationData;
 import uk.doh.oht.database.service.DatabaseCreateService;
 import uk.doh.oht.database.service.EntityRepositoryHelper;
 

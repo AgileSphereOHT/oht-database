@@ -116,6 +116,8 @@ dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '1.2.0.RELEASE'
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+    compile group: 'uk.doh.oht', name: 'oht-common', version: '1.0.0-SNAPSHOT'
+
     runtime group: 'me.moocar', name: 'logback-gelf', version: '0.3'
 
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
@@ -155,7 +157,7 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.0'
+    gradleVersion = '3.1'
 }
 
 test {

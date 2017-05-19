@@ -2,7 +2,7 @@ package uk.doh.oht.database.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import uk.doh.oht.database.domain.PendingRegistrationData;
+import uk.doh.oht.db.domain.PendingRegistrationData;
 import uk.doh.oht.database.model.RegistrationEntity;
 import uk.doh.oht.database.repos.PendingRegistrationRepository;
 import uk.doh.oht.database.repos.RegistrationRepository;

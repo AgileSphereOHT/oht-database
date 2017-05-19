@@ -1,8 +1,8 @@
 package uk.doh.oht.database.service;
 
-import uk.doh.oht.database.domain.*;
+import uk.doh.oht.db.domain.*;
 import uk.doh.oht.database.model.*;
-import uk.doh.oht.database.validation.StartDateFormDate;
+import uk.doh.oht.validation.StartDateFormDate;
 
 import java.sql.Timestamp;
 import java.util.Arrays;

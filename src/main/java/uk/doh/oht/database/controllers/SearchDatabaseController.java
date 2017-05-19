@@ -7,10 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import uk.doh.oht.database.domain.PendingRegistrationData;
-import uk.doh.oht.database.domain.SearchData;
-import uk.doh.oht.database.domain.RegistrationData;
-import uk.doh.oht.database.domain.UserWorkDetails;
+import uk.doh.oht.db.domain.PendingRegistrationData;
+import uk.doh.oht.db.domain.SearchData;
+import uk.doh.oht.db.domain.RegistrationData;
+import uk.doh.oht.db.domain.UserWorkDetails;
 import uk.doh.oht.database.service.DatabaseSearchResultsService;
 
 import javax.inject.Inject;

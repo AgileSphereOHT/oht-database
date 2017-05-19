@@ -6,15 +6,16 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import uk.doh.oht.database.domain.PendingRegistrationData;
-import uk.doh.oht.database.domain.RegistrationData;
-import uk.doh.oht.database.domain.SearchData;
+import uk.doh.oht.db.domain.PendingRegistrationData;
+import uk.doh.oht.db.domain.RegistrationData;
+import uk.doh.oht.db.domain.SearchData;
 import uk.doh.oht.database.model.PendingRegistrationEntity;
 import uk.doh.oht.database.model.RegistrationEntity;
 import uk.doh.oht.database.model.RegistrationStatusEntity;
 import uk.doh.oht.database.repos.PendingRegistrationRepository;
 import uk.doh.oht.database.repos.RegistrationRepository;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +40,8 @@ public class DatabaseSearchResultsServiceTest {
     private EntityResultConverter entityResultConverter;
     @Mock
     private EntityRepositoryHelper entityRepositoryHelper;
+    @Mock
+    private EntityManager entityManager;
 
     private List<SearchData> searchDataList;
     private List<PendingRegistrationData> pendingRegistrationDataList;
@@ -51,7 +54,8 @@ public class DatabaseSearchResultsServiceTest {
                 pendingRegistrationRepository,
                 registrationRepository,
                 entityResultConverter,
-                entityRepositoryHelper
+                entityRepositoryHelper,
+                entityManager
         );
 
         searchDataList = new ArrayList<>();
@@ -72,12 +76,11 @@ public class DatabaseSearchResultsServiceTest {
     @Test
     public void testSearchCases() throws Exception {
         final RegistrationEntity registrationEntity = new RegistrationEntity();
-        final List<RegistrationEntity> registrationEntityList = new ArrayList<>();
-        registrationEntityList.add(registrationEntity);
+        registrationEntity.setRegistrationId(1L);
 
         given(registrationRepository.findByCitizenEntityNinoIgnoreCaseAndRegistrationStatusEntityIn(
                 anyString(), Mockito.<List<RegistrationStatusEntity>> any())).willReturn(registrationEntity);
-        given(entityResultConverter.convertRegistrationEntity(registrationEntityList)).willReturn(registrationDataList);
+        given(entityResultConverter.convertRegistrationEntity( Mockito.<List<RegistrationEntity>> any())).willReturn(registrationDataList);
         final List<RegistrationData> registrationDataList1 = databaseSearchResultsService.searchCases(searchDataList);
         assertThat(registrationDataList, is(registrationDataList1));
     }
@@ -85,14 +88,16 @@ public class DatabaseSearchResultsServiceTest {
     @Test
     public void testSearchCases2() throws Exception {
         final RegistrationEntity registrationEntity = new RegistrationEntity();
+        registrationEntity.setRegistrationId(1L);
         final List<RegistrationEntity> registrationEntityList = new ArrayList<>();
         registrationEntityList.add(registrationEntity);
 
         given(registrationRepository.findByCitizenEntityNinoIgnoreCaseAndRegistrationStatusEntityIn(
                 anyString(), Mockito.<List<RegistrationStatusEntity>> any())).willReturn(null);
-        given(registrationRepository.findByCitizenEntityFirstNameLikeIgnoreCaseAndCitizenEntityLastNameLikeIgnoreCaseAndCitizenEntityDateOfBirthAndRegistrationStatusEntityIn(
-                anyString(), anyString(), Mockito.<Date> any(), Mockito.<List<RegistrationStatusEntity>> any())).willReturn(registrationEntity);
+        given(registrationRepository.getRegistrationEntity(Mockito.<EntityManager> any(),
+                anyString(), anyString(), Mockito.<Date> any(), Mockito.<List<RegistrationStatusEntity>> any())).willReturn(registrationEntityList);
         given(entityResultConverter.convertRegistrationEntity(registrationEntityList)).willReturn(registrationDataList);
+
         final List<RegistrationData> registrationDataList1 = databaseSearchResultsService.searchCases(searchDataList);
         assertThat(registrationDataList, is(registrationDataList1));
     }
