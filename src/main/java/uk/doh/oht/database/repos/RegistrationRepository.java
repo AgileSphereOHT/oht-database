@@ -50,7 +50,6 @@ public interface RegistrationRepository extends CrudRepository<RegistrationEntit
         query.setParameter(3, simpleDateFormat.format(dateOfBirth));
         query.setParameter(4, statuses.stream().map(status -> status.getRegistrationStatusId()).collect(toList()));
 
-        List<RegistrationEntity> result = query.getResultList();
-        return result;
+        return query.getResultList();
     }
 }
