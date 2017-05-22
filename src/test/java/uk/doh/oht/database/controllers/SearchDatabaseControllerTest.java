@@ -84,7 +84,7 @@ public class SearchDatabaseControllerTest {
                 .andExpect(handler().methodName("retrieveOpenRegistrations"))
                 .andExpect(handler().handlerType(SearchDatabaseController.class))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(content().string("[{\"registrationId\":1,\"userDetails\":null,\"addresses\":null,\"benefitType\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"startDate\":null,\"hasForeignPension\":null,\"requestedBy\":null,\"s073StartDate\":null,\"caseId\":null,\"modifiedByUserId\":null}]"));
+                .andExpect(content().string("[{\"registrationId\":1,\"userDetails\":null,\"addresses\":null,\"benefitType\":null,\"issueType\":null,\"registrationStatus\":null,\"country\":null,\"entitlementDate\":null,\"startDate\":null,\"hasForeignPension\":null,\"requestedBy\":null,\"dueDate\":null,\"s073StartDate\":null,\"caseId\":null,\"modifiedByUserId\":null}]"));
     }
 
     @Test

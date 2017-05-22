@@ -40,6 +40,7 @@ public class EntityResultConverter {
                     null,
                     registrationEntity.getRequestedBy(),
                     null,
+                    null,
                     registrationEntity.getCaseId(),
                     null)
             );

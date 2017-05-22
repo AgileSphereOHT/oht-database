@@ -115,4 +115,8 @@ public class DatabaseSearchResultsService {
                 .numberMonthlyRequests(countMonthlyS1Requests)
                 .build();
     }
+
+    public String getCountryDescription(final String countryCode) {
+        return entityRepositoryHelper.getCountryRepository().findByDescription(countryCode).getDescription();
+    }
 }

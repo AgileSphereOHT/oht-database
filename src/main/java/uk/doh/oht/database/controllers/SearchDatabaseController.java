@@ -55,4 +55,13 @@ public class SearchDatabaseController {
     public ResponseEntity<UserWorkDetails> retrieveUserUsage(@RequestBody final String userName) {
         return ResponseEntity.ok().body(databaseSearchResultsService.getUserUsage(userName));
     }
+
+    @PostMapping(value = "/oht-database/retrieve-country", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(
+            value = "Gets description from country code",
+            notes = "Send a description from country code from database"
+    )
+    public ResponseEntity<String> retrieveCountryDescription(@RequestBody final String countryCode) {
+        return ResponseEntity.ok().body(databaseSearchResultsService.getCountryDescription(countryCode));
+    }
 }
