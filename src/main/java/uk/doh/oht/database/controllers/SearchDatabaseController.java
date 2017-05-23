@@ -4,9 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uk.doh.oht.db.domain.PendingRegistrationData;
 import uk.doh.oht.db.domain.SearchData;
 import uk.doh.oht.db.domain.RegistrationData;
@@ -56,12 +54,12 @@ public class SearchDatabaseController {
         return ResponseEntity.ok().body(databaseSearchResultsService.getUserUsage(userName));
     }
 
-    @PostMapping(value = "/oht-database/retrieve-country", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/oht-database/retrieve-country", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(
             value = "Gets description from country code",
             notes = "Send a description from country code from database"
     )
-    public ResponseEntity<String> retrieveCountryDescription(@RequestBody final String countryCode) {
+    public ResponseEntity<String> retrieveCountryDescription(@RequestParam final String countryCode) {
         return ResponseEntity.ok().body(databaseSearchResultsService.getCountryDescription(countryCode));
     }
 }

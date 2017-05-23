@@ -37,6 +37,12 @@ allprojects {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
     description = 'OHT Database'
+
+    configurations.all {
+        // check for updates every build
+        resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+        resolutionStrategy.cacheDynamicVersionsFor(0, 'seconds')
+    }
 }
 
 String repo = version.endsWith('SNAPSHOT') ? 'libs-snapshot-local' : 'libs-release-local'
@@ -87,10 +93,6 @@ configurations {
     testCompile.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 }
 
-configurations.all {
-    // check for updates every build
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-}
 
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'

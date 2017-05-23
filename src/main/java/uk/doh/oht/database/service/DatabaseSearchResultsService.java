@@ -73,12 +73,12 @@ public class DatabaseSearchResultsService {
         final List<RegistrationEntity> partialRegistrationEntityList = findSearchDataByOtherCriteria(searchData, statuses);
         registrationEntityList.addAll(
                 partialRegistrationEntityList.stream()
-                        .filter(registrationEntity -> registrationId != registrationEntity.getRegistrationId())
+                        .filter(registrationEntity -> { registrationEntity.setCaseId(searchData.getCaseId()); return registrationId != registrationEntity.getRegistrationId(); })
                         .collect(toList()));
     }
 
     private List<RegistrationEntity> findSearchDataByOtherCriteria(final SearchData searchData,
-                                                              final List<RegistrationStatusEntity> statuses) {
+                                                                   final List<RegistrationStatusEntity> statuses) {
         return registrationRepository.getRegistrationEntity(
                 entityManager,
                 searchData.getFirstName(),
@@ -117,6 +117,6 @@ public class DatabaseSearchResultsService {
     }
 
     public String getCountryDescription(final String countryCode) {
-        return entityRepositoryHelper.getCountryRepository().findByDescription(countryCode).getDescription();
+        return entityRepositoryHelper.getCountryRepository().findByName(countryCode).getDescription();
     }
 }

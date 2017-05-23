@@ -71,7 +71,6 @@ public class SearchDatabaseControllerTest {
         final PendingRegistrationData pendingRegistrationData = new PendingRegistrationData();
         pendingRegistrationData.setPendingRegistrationId(1l);
         pendingRegistrationDataList.add(pendingRegistrationData);
-
     }
 
     @Test

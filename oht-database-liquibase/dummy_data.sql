@@ -65,3 +65,91 @@ VALUES ('Mrs', 'Heather', null, 'Jones', null, '10-03-1957', 2, 1, '22345679',
         null, 1, 'PR2 1HB', '100', 'Rose Street', 'Madrid', null,
         null, null, 3, '478SD', '10-02-2017', 1, 'Main', 1, 1, current_date, 'Customer', 'no', 1, current_date, current_date, 'pwhitehead', 'pwhitehead');
 
+
+--Partial matches
+INSERT INTO public.citizen(
+  title, first_name, other_name, last_name, maiden_name, date_of_birth, gender_id, nationality_id, nino, creation_date, last_updated_date, last_updated_by, created_by)
+VALUES ('Mr', 'Peter', null, 'White', null, '18-09-1967', 1, 1, '1234567', current_date, current_date, 'pwhitehead', 'pwhitehead');
+--insert uk address
+INSERT INTO public.address(
+  line_one, line_two, line_three, line_four, line_five, line_six, country_id, postcode, address_type_id, correspondence_address, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
+VALUES ('2', 'The Street', 'Preston', 'Lancashire', null, null, 1, 'PR1 1HB', 1, 'true', current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
+--map uk addresses to citizen
+INSERT INTO public.citizen_address(
+  citizen_id, address_id)
+VALUES (currval('citizen_citizen_id_seq'), currval('address_address_id_seq'));
+--insert foreign address
+INSERT INTO public.address(
+  line_one, line_two, line_three, line_four, line_five, line_six, country_id, postcode, address_type_id, correspondence_address, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
+VALUES ('100', 'Floral Street', 'Madrid', null, null, null, 3, '378SD', 2, 'false', current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
+--map foreign addresses to citizen
+INSERT INTO public.citizen_address(
+  citizen_id, address_id)
+VALUES (currval('citizen_citizen_id_seq'), currval('address_address_id_seq'));
+--add contact details
+INSERT INTO public.contact_detail(
+  contact_detail_type_id, contact
+)
+VALUES (1, '07800000000');
+--add into join table
+INSERT INTO public.citizen_contact_detail(
+  citizen_id, contact_detail_id
+)
+VALUES (currval('citizen_citizen_id_seq'), currval('contact_detail_contact_detail_id_seq'));
+--add contact details
+INSERT INTO public.contact_detail(
+  contact_detail_type_id, contact
+)
+VALUES (3, 'pw1@bt.com');
+--add into join table
+INSERT INTO public.citizen_contact_detail(
+  citizen_id, contact_detail_id
+)
+VALUES (currval('citizen_citizen_id_seq'), currval('contact_detail_contact_detail_id_seq'));
+--insert registration
+INSERT INTO public.registration(
+  citizen_id, requested_by, citizen_status_id, benefit_type_id, issue_type, registration_status_id, country_id, entitlement_date, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
+VALUES (currval('citizen_citizen_id_seq'), 'Customer', 1, 1, 'Main', 1, 1, current_date, current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
+INSERT INTO public.citizen(
+  title, first_name, other_name, last_name, maiden_name, date_of_birth, gender_id, nationality_id, nino, creation_date, last_updated_date, last_updated_by, created_by)
+VALUES ('Mr', 'Patrick', null, 'Whitwerth', null, '20-03-1964', 1, 1, '1234567', current_date, current_date, 'pwhitehead', 'pwhitehead');
+--insert uk address
+INSERT INTO public.address(
+  line_one, line_two, line_three, line_four, line_five, line_six, country_id, postcode, address_type_id, correspondence_address, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
+VALUES ('2', 'The Street', 'Preston', 'Lancashire', null, null, 1, 'PR1 1HB', 1, 'true', current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
+--map uk addresses to citizen
+INSERT INTO public.citizen_address(
+  citizen_id, address_id)
+VALUES (currval('citizen_citizen_id_seq'), currval('address_address_id_seq'));
+--insert foreign address
+INSERT INTO public.address(
+  line_one, line_two, line_three, line_four, line_five, line_six, country_id, postcode, address_type_id, correspondence_address, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
+VALUES ('100', 'Floral Street', 'Madrid', null, null, null, 3, '378SD', 2, 'false', current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
+--map foreign addresses to citizen
+INSERT INTO public.citizen_address(
+  citizen_id, address_id)
+VALUES (currval('citizen_citizen_id_seq'), currval('address_address_id_seq'));
+--add contact details
+INSERT INTO public.contact_detail(
+  contact_detail_type_id, contact
+)
+VALUES (1, '07900000000');
+--add into join table
+INSERT INTO public.citizen_contact_detail(
+  citizen_id, contact_detail_id
+)
+VALUES (currval('citizen_citizen_id_seq'), currval('contact_detail_contact_detail_id_seq'));
+--add contact details
+INSERT INTO public.contact_detail(
+  contact_detail_type_id, contact
+)
+VALUES (3, 'pw2@bt.com');
+--add into join table
+INSERT INTO public.citizen_contact_detail(
+  citizen_id, contact_detail_id
+)
+VALUES (currval('citizen_citizen_id_seq'), currval('contact_detail_contact_detail_id_seq'));
+--insert registration
+INSERT INTO public.registration(
+  citizen_id, requested_by, citizen_status_id, benefit_type_id, issue_type, registration_status_id, country_id, entitlement_date, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
+VALUES (currval('citizen_citizen_id_seq'), 'Customer', 1, 1, 'Main', 1, 1, current_date, current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
