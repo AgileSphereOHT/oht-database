@@ -1,6 +1,13 @@
 Setup Liquibase
 ===============
 
+Creating the Database
+===================
+
+This will create database.
+
+  ./init-oht-db.sh
+
 1) Installation
 use brew:  brew install liquibase
 or download jar and add it to your path 
@@ -11,15 +18,6 @@ or download jar and add it to your path
 3) If running validate fails try running with debug:
   liquibase --classpath=<location driver>/postgresql.jar --logLevel=DEBUG validate
  
-
-Creating the Database
-===================
-
-This will create database.
-
-  ./init-oht-db.sh
-
-
 Dropping everything
 ======================
 From the command line
