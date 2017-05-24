@@ -16,8 +16,8 @@ import uk.doh.oht.database.repos.PendingRegistrationRepository;
 import uk.doh.oht.database.repos.RegistrationRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -42,6 +42,8 @@ public class DatabaseSearchResultsServiceTest {
     private EntityRepositoryHelper entityRepositoryHelper;
     @Mock
     private EntityManager entityManager;
+    @Mock
+    private Query query;
 
     private List<SearchData> searchDataList;
     private List<PendingRegistrationData> pendingRegistrationDataList;
@@ -80,6 +82,10 @@ public class DatabaseSearchResultsServiceTest {
 
         given(registrationRepository.findByCitizenEntityNinoIgnoreCaseAndRegistrationStatusEntityIn(
                 anyString(), Mockito.<List<RegistrationStatusEntity>> any())).willReturn(registrationEntity);
+        given(registrationRepository.findByCitizenEntityNinoIgnoreCaseAndRegistrationStatusEntityIn(
+                anyString(), Mockito.<List<RegistrationStatusEntity>> any())).willReturn(null);
+        given(entityManager.createNativeQuery(anyString(), Mockito.<Class<RegistrationEntity>> any())).willReturn(query);
+
         given(entityResultConverter.convertRegistrationEntity( Mockito.<List<RegistrationEntity>> any())).willReturn(registrationDataList);
         final List<RegistrationData> registrationDataList1 = databaseSearchResultsService.searchCases(searchDataList);
         assertThat(registrationDataList, is(registrationDataList1));
@@ -94,8 +100,8 @@ public class DatabaseSearchResultsServiceTest {
 
         given(registrationRepository.findByCitizenEntityNinoIgnoreCaseAndRegistrationStatusEntityIn(
                 anyString(), Mockito.<List<RegistrationStatusEntity>> any())).willReturn(null);
-        given(registrationRepository.getRegistrationEntity(Mockito.<EntityManager> any(),
-                anyString(), anyString(), Mockito.<Date> any(), Mockito.<List<RegistrationStatusEntity>> any())).willReturn(registrationEntityList);
+        given(entityManager.createNativeQuery(anyString(), Mockito.<Class<RegistrationEntity>> any())).willReturn(query);
+        given(query.getResultList()).willReturn(registrationEntityList);
         given(entityResultConverter.convertRegistrationEntity(registrationEntityList)).willReturn(registrationDataList);
 
         final List<RegistrationData> registrationDataList1 = databaseSearchResultsService.searchCases(searchDataList);
