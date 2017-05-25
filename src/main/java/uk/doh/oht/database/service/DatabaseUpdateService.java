@@ -26,12 +26,17 @@ public class DatabaseUpdateService {
 
     @Transactional
     public Boolean updateRegistration(final RegistrationData registrationData) {
-        registrationRepository.setRegistrationDatesById(
-                registrationData.getS073StartDate().getDate(),
-                registrationData.getStartDate().getDate(),
-                entityRepositoryHelper.getCompletedStatus(),
-                registrationData.getModifiedByUserId(),
-                registrationData.getRegistrationId());
-        return Boolean.TRUE;
+        try {
+            log.info("Enter updateRegistration");
+            registrationRepository.setRegistrationDatesById(
+                    registrationData.getS073StartDate().getDate(),
+                    registrationData.getStartDate().getDate(),
+                    entityRepositoryHelper.getCompletedStatus(),
+                    registrationData.getModifiedByUserId(),
+                    registrationData.getRegistrationId());
+            return Boolean.TRUE;
+        } finally {
+            log.info("Exit updateRegistration");
+        }
     }
 }

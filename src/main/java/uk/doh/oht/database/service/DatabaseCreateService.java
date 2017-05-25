@@ -34,13 +34,18 @@ public class DatabaseCreateService {
 
     @Transactional
     public Boolean createS1Request(final PendingRegistrationData pendingRegistrationData) {
-        final RegistrationEntity registrationEntity = registrationEntityCreator.createRegistrationEntity(pendingRegistrationData);
-        registrationRepository.save(registrationEntity);
-        pendingRegistrationRepository.setPendingRegistrationDatesById(
-                entityRepositoryHelper.getCompletedStatus(),
-                pendingRegistrationData.getModifiedByUserId(),
-                pendingRegistrationData.getPendingRegistrationId()
-        );
-        return Boolean.TRUE;
+        try {
+            log.info("Enter createS1Request");
+            final RegistrationEntity registrationEntity = registrationEntityCreator.createRegistrationEntity(pendingRegistrationData);
+            registrationRepository.save(registrationEntity);
+            pendingRegistrationRepository.setPendingRegistrationDatesById(
+                    entityRepositoryHelper.getCompletedStatus(),
+                    pendingRegistrationData.getModifiedByUserId(),
+                    pendingRegistrationData.getPendingRegistrationId()
+            );
+            return Boolean.TRUE;
+        } finally {
+            log.info("Exit createS1Request");
+        }
     }
 }

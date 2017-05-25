@@ -31,7 +31,12 @@ public class CreateDatabaseController {
             notes = "Creates registration data from pending request"
     )
     public ResponseEntity<Boolean> createS1Request(@RequestBody final PendingRegistrationData pendingRegistrationData) {
-        return ResponseEntity.ok().body(databaseCreateService.createS1Request(pendingRegistrationData));
+        try {
+            log.info("Enter createS1Request");
+            return ResponseEntity.ok().body(databaseCreateService.createS1Request(pendingRegistrationData));
+        } finally {
+            log.info("Exit createS1Request");
+        }
     }
 
 }

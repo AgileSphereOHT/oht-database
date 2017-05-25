@@ -33,7 +33,12 @@ public class SearchDatabaseController {
             notes = "Send a request to return registrations matching all search data criteria in database"
     )
     public ResponseEntity<List<RegistrationData>> retrieveOpenRegistrations(@RequestBody final List<SearchData> searchData) {
-        return ResponseEntity.ok().body(databaseSearchResultsService.searchCases(searchData));
+        try {
+            log.info("Enter retrieveOpenRegistrations");
+            return ResponseEntity.ok().body(databaseSearchResultsService.searchCases(searchData));
+        } finally {
+            log.info("Exit retrieveOpenRegistrations");
+        }
     }
 
     @PostMapping(value = "/oht-database/retrieve-pending-registrations", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -42,7 +47,12 @@ public class SearchDatabaseController {
             notes = "Send a request to return all search pending registrations from database"
     )
     public ResponseEntity<List<PendingRegistrationData>> retrievePendingRegistrations() {
-        return ResponseEntity.ok().body(databaseSearchResultsService.getPendingRegistrations());
+        try {
+            log.info("Enter retrievePendingRegistrations");
+            return ResponseEntity.ok().body(databaseSearchResultsService.getPendingRegistrations());
+        } finally {
+            log.info("Exit retrievePendingRegistrations");
+        }
     }
 
     @PostMapping(value = "/oht-database/retrieve-user-work-details", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -51,7 +61,12 @@ public class SearchDatabaseController {
             notes = "Send a request to return a count of user changes from database"
     )
     public ResponseEntity<UserWorkDetails> retrieveUserUsage(@RequestBody final String userName) {
-        return ResponseEntity.ok().body(databaseSearchResultsService.getUserUsage(userName));
+        try {
+            log.info("Enter retrieveUserUsage");
+            return ResponseEntity.ok().body(databaseSearchResultsService.getUserUsage(userName));
+        } finally {
+            log.info("Exit retrieveUserUsage");
+        }
     }
 
     @GetMapping(value = "/oht-database/retrieve-country", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -60,6 +75,11 @@ public class SearchDatabaseController {
             notes = "Send a description from country code from database"
     )
     public ResponseEntity<String> retrieveCountryDescription(@RequestParam final String countryCode) {
-        return ResponseEntity.ok().body(databaseSearchResultsService.getCountryDescription(countryCode));
+        try {
+            log.info("Enter retrieveCountryDescription");
+            return ResponseEntity.ok().body(databaseSearchResultsService.getCountryDescription(countryCode));
+        } finally {
+            log.info("Exit retrieveCountryDescription");
+        }
     }
 }

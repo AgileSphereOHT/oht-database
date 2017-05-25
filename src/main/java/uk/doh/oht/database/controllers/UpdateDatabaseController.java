@@ -31,7 +31,11 @@ public class UpdateDatabaseController {
             notes = "updates registration data in database"
     )
     public ResponseEntity<Boolean> updateRegistration(@RequestBody final RegistrationData registrationData) {
-        return ResponseEntity.ok().body(databaseUpdateService.updateRegistration(registrationData));
+        try {
+            log.info("Enter updateRegistration");
+            return ResponseEntity.ok().body(databaseUpdateService.updateRegistration(registrationData));
+        } finally {
+            log.info("Exit updateRegistration");
+        }
     }
-
 }
