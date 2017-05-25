@@ -4,6 +4,15 @@ Setup Liquibase
 Creating the Database
 ===================
 
+Database needs following extensions
+psql -U postgres -d oht_database -c "create extension pg_trgm;"
+psql -U postgres -d oht_database -c "create extension btree_gin";
+
+if results from 
+psql -U postgres -d oht_database -c "show datestyle;" 
+do not equal ISO, DMY run the following 
+psql -U postgres -d oht_database -c "ALTER DATABASE oht_database SET datestyle TO 'ISO, DMY'";
+
 This will create database.
 
   ./init-oht-db.sh
