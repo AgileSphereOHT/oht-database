@@ -29,7 +29,7 @@ public class RegistrationEntityCreator {
             return RegistrationEntity.builder()
                     .registrationStatusEntity(entityRepositoryHelper.getPendingStatus())
                     .citizenEntity(createCitizenEntity(pendingRegistrationData, today))
-                    .countryEntity(entityRepositoryHelper.retrieveCountryEntity(pendingRegistrationData.getCountry()))
+                    .countryEntity(entityRepositoryHelper.retrieveCountryEntityByDescription(pendingRegistrationData.getCountry()))
                     .benefitTypeEntity(entityRepositoryHelper.retrieveBenefitTypeEntity(pendingRegistrationData.getBenefitType()))
                     .citizenStatusEntity(entityRepositoryHelper.retrieveCitizenStatusEntity(pendingRegistrationData.getOccupationType()))
                     .entitlementDate(pendingRegistrationData.getEntitlementDate())

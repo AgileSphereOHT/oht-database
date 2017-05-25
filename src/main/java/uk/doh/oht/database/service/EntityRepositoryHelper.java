@@ -78,6 +78,10 @@ public class EntityRepositoryHelper {
         return countryRepository.findByName(name);
     }
 
+    public CountryEntity retrieveCountryEntityByDescription(final String description) {
+        return countryRepository.findByDescription(description);
+    }
+
     public BenefitTypeEntity retrieveBenefitTypeEntity(final String name) {
         return benefitTypeRepository.findByName(name);
     }

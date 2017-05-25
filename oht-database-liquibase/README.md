@@ -52,3 +52,10 @@ liquibase --classpath=$PGJARLOCATION/postgresql.jar rollback ohtd_001_1
 Dummy Data
 =====================
 File dummy_data.sql contains some test data. 
+
+to remove dummy data
+truncate table address cascade;
+truncate table citizen cascade;
+truncate table contact_detail cascade;
+truncate table registration cascade;
+truncate table pending_registration cascade;
