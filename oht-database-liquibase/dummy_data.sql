@@ -69,7 +69,7 @@ VALUES ('Mrs', 'Heather', null, 'Jones', null, '10-03-1957', 2, 1, '22345679',
 --Partial matches
 INSERT INTO public.citizen(
   title, first_name, other_name, last_name, maiden_name, date_of_birth, gender_id, nationality_id, nino, creation_date, last_updated_date, last_updated_by, created_by)
-VALUES ('Mr', 'Peter', null, 'White', null, '18-09-1967', 1, 1, '1234567', current_date, current_date, 'pwhitehead', 'pwhitehead');
+VALUES ('Mr', 'Petar', null, 'Whitehaed', null, '18-09-2037', 1, 1, '1234567', current_date, current_date, 'pwhitehead', 'pwhitehead');
 --insert uk address
 INSERT INTO public.address(
   line_one, line_two, line_three, line_four, line_five, line_six, country_id, postcode, address_type_id, correspondence_address, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
@@ -112,7 +112,7 @@ INSERT INTO public.registration(
 VALUES (currval('citizen_citizen_id_seq'), 'Customer', 1, 1, 'Main', 1, 1, current_date, current_date, null, current_date, current_date, 'pwhitehead', 'pwhitehead');
 INSERT INTO public.citizen(
   title, first_name, other_name, last_name, maiden_name, date_of_birth, gender_id, nationality_id, nino, creation_date, last_updated_date, last_updated_by, created_by)
-VALUES ('Mr', 'Patrick', null, 'Whitwerth', null, '20-03-1964', 1, 1, '1234567', current_date, current_date, 'pwhitehead', 'pwhitehead');
+VALUES ('Mr', 'Peter', null, 'White', null, '10-02-2037', 1, 1, '1234567', current_date, current_date, 'pwhitehead', 'pwhitehead');
 --insert uk address
 INSERT INTO public.address(
   line_one, line_two, line_three, line_four, line_five, line_six, country_id, postcode, address_type_id, correspondence_address, start_date, end_date, creation_date, last_updated_date, last_updated_by, created_by)
