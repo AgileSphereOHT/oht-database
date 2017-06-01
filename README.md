@@ -1,65 +1,72 @@
-## Overseas Healthcare Service - Database Microservice
+# Overseas Healthcare Service - Database Microservice
 
-  ### Overview
-  The following project is part of a solution for an Overseas Healthcare service commissioned by the UK Department of Health.
+## Overview
 
-  With an initial focus on provision for state pensioners living outside their country of origin, it will progressively provide a replacement for the existing Medical Benefits system currently being used to provide overseas healthcare support.
+The following project is part of a solution for an Overseas Healthcare service commissioned by the UK Department of Health.
 
-  A key requirement of the proposed development is that it is capable of interfacing with the RINA product, developed by EESSI, which acts as the ‘middle man’ in interactions between different member states for registering foreign nationals and reimbursement of claims. 
+With an initial focus on provision for state pensioners living outside their country of origin, it will progressively provide a replacement for the existing Medical Benefits system currently being used to provide overseas healthcare support.
 
-  The initial development has successfully delivered a demonstration of this interface working against a deployed instance of RINA, and a front end that is in line with the S1 Request and Registration ‘happy paths' of the prototype being tested against user needs.
+A key requirement of the proposed development is that it is capable of interfacing with the RINA product, developed by EESSI, which acts as the ‘middle man’ in interactions between different member states for registering foreign nationals and reimbursement of claims. 
 
-  ### Solution services
-  The current solution has been developed as three REST based micro services built using Spring Boot running on an embedded Tomcat web container.
+The initial development has successfully delivered a demonstration of this interface working against a deployed instance of RINA, and a front end that is in line with the S1 Request and Registration ‘happy paths' of the prototype being tested against user needs.
 
-      oht-frontend (**cross reference**)
-      oht-database (this project)
-      oht-rina-registration (**cross reference**)
+## Solution services
 
-  There is also a common shared library containing the definitions of system domain data objects.
+The current solution has been developed as three REST based micro services built using Spring Boot running on an embedded Tomcat web container.
 
-      ohs-common (**cross reference**)
+    oht-frontend (**cross reference**)
+    oht-database (this project)
+    oht-rina-registration (**cross reference**)
 
-  ### Technologies being used across projects
-  - Spring MVC
-  - Thymeleaf
-  - Spring Security
-  - OAuth2
-  - JPA
-  - Liquibase
-  - PostgreSQL
-  - Gradle
-  - Lombok
-  - Swagger
+There is also a common shared library containing the definitions of system domain data objects.
 
-  ### This project
-  The oht-database microservice provides a RESTful interface to the PostgreSQL relational database for the Overseas Healthcare solution.
+    ohs-common (**cross reference**)
 
-  The building of a database for development purposes is documented in a sub project README under /oht-database-liquibase.
+## Technologies being used across projects
 
-  Database operations are implemented via standard Spring JPA.
-  RESTful requests are routed to Controller methods which delegate DB operations to a service layer.
-  Incoming and outgoing domain objects mapped to DB tables via JPA entities managed by a table specific CrudRepository.
+- Spring MVC
+- Thymeleaf
+- Spring Security
+- OAuth2
+- JPA
+- Liquibase
+- PostgreSQL
+- Gradle
+- Lombok
+- Swagger
 
-  Liquibase is being used to provide a repeatable version specific build of the database schema and population of a base data set.
+## This project
 
-  The Restful interface is documented via Swagger (**find url to access generated documentation**)
+The oht-database microservice provides a RESTful interface to the PostgreSQL relational database for the Overseas Healthcare solution.
 
-  ### Build
+The building of a database for development purposes is documented in a sub project README under /oht-database-liquibase.
 
-  Assumes local installation of PostgreSQL and Gradle
+Database operations are implemented via standard Spring JPA.
+RESTful requests are routed to Controller methods which delegate DB operations to a service layer.
+Incoming and outgoing domain objects mapped to DB tables via JPA entities managed by a table specific CrudRepository.
 
-  Follow the instructions in the README file in the oht-database-liquibase directory, providing passwords for the <oht_user> schema user in liquibase.properties and init-ohs-db.sh
-  From project root
+Liquibase is being used to provide a repeatable version specific build of the database schema and population of a base data set.
 
-      gradle clean                to clear build dir
-      gradle test                 to compile and run unit tests
-      gradle jar                  to build jar file
-      gradle build                to compile, run tests and create jar file
-      gradle publishToMavenLocal  to build and install jar in local maven repo
-      gradle bootrun              to start up microservice in embedded tomcat container
+The Restful interface is documented via Swagger (**find url to access generated documentation**)
 
+## Build
 
-  #### See also 
+Assumes local installation of PostgreSQL and Gradle
 
-  https://oh-alpha-confluence.atlassian.net/wiki/display/OHA/Setting+up+development+environment
+Follow the instructions in the README file in the oht-database-liquibase directory, providing passwords for the <oht_user> schema user in liquibase.properties and init-ohs-db.sh
+From project root
+
+    gradle clean                to clear build dir
+    gradle test                 to compile and run unit tests
+    gradle jar                  to build jar file
+    gradle build                to compile, run tests and create jar file
+    gradle publishToMavenLocal  to build and install jar in local maven repo
+    gradle bootrun              to start up microservice in embedded tomcat container
+
+## License
+
+This document is released under [CC0](LICENSE.md).
+
+## See also 
+
+https://oh-alpha-confluence.atlassian.net/wiki/display/OHA/Setting+up+development+environment
