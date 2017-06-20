@@ -14,13 +14,16 @@ The initial development has successfully delivered a demonstration of this inter
 
 The current solution has been developed as three REST based micro services built using Spring Boot running on an embedded Tomcat web container.
 
-    oht-frontend (**cross reference**)
-    oht-database (this project)
-    oht-rina-registration (**cross reference**)
+[oht-frontend](https://github.com/AgileSphereOHT/oht-frontend)
+
+[oht-database](https://github.com/AgileSphereOHT/oht-database) (this project)
+
+[oht-rina-registration](https://github.com/AgileSphereOHT/oht-rina-registration)
 
 There is also a common shared library containing the definitions of system domain data objects.
 
-    ohs-common (**cross reference**)
+[oht-common](https://github.com/AgileSphereOHT/oht-common)
+
 
 ## Technologies being used across projects
 
