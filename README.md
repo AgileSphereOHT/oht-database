@@ -50,7 +50,7 @@ Incoming and outgoing domain objects mapped to DB tables via JPA entities manage
 
 Liquibase is being used to provide a repeatable version specific build of the database schema and population of a base data set.
 
-The Restful interface is documented via Swagger ( http://{baseurl}/swagger-ui.html )
+The Restful interface is documented via Swagger ( http://<baseurl>/swagger-ui.html )
 
 ## Build
 
